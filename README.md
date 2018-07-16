@@ -22,6 +22,10 @@
   - Props getter
   - State reducer
   - controlled props
+  
+### React improvement
+
+- recompose
 
 ## kind of redux stuff
 
