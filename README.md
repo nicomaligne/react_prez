@@ -1,21 +1,20 @@
 # react_prez
-Idea for prez :
 
-Back to Basic
+## React stuff
 
-React Basics
-whats JSX ?
+### Back to Basic
 
-react Component 		-> render every children
+- whats JSX ?
+- react Component -> render every children
+- react PureComponent -> impl shallow shouldComponent Update -> show example with double rendering
 
-react PureComponent 	-> impl shallow shouldComponent Update -> show example with double rendering
+### React Pattern
 
-React Pattern
-HOC 					-> What's a HOC ? When to use it ? Connect example
+- HOC -> What's a HOC ? When to use it ? Connect example
+- renderProps	-> What's renderProps ? When to use it ? Example ?
+- function as children	-> What's functions as children ? Difference with renderProps ? When to use it ?
+- Dodds pattern ?
 
-renderProps				-> What's renderProps ? When to use it ? Example ?
+## kind of redux stuff
 
-function as children	-> What's functions as children ? Difference with renderProps ? When to use it ?
-
-Dodds pattern ?
- 
+reselect for the selectors ( to avoid rerenders )
