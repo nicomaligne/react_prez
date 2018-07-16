@@ -1,4 +1,4 @@
-# react_prez
+# Présentation React
 
 ## React stuff
 
