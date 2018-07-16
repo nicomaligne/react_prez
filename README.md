@@ -14,8 +14,14 @@
 - HOC -> What's a HOC ? When to use it ? Connect example
 - renderProps	-> What's renderProps ? When to use it ? Example ?
 - function as children	-> What's functions as children ? Difference with renderProps ? When to use it ?
-- Dodds pattern ?
+- Dodds pattern :
+  - How to enforce a component API
+  - Compound
+  - Context API
+  - Props getter
+  - State reducer
+  - controlled props
 
 ## kind of redux stuff
 
-reselect for the selectors ( to avoid rerenders )
+- reselect for the selectors ( to avoid rerenders )
