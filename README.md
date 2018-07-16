@@ -5,8 +5,9 @@
 ### Back to Basic
 
 - whats JSX ?
-- react Component -> render every children
-- react PureComponent -> impl shallow shouldComponent Update -> show example with double rendering
+- Component -> render every children
+- PureComponent -> impl shallow shouldComponent Update -> show example with double rendering
+- Stateless / functionnal components ( pretty much the same )
 
 ### React Pattern
 
