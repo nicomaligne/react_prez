@@ -24,6 +24,7 @@
     -   Props getter
     -   State reducer
     -   controlled props
+        - https://medium.com/yazanaabed/advanced-react-patterns-7326f5a5ad1b
 
 ### React improvement
 
