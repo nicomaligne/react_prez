@@ -1,4 +1,4 @@
-# Présentation React
+# React presentation
 
 ## React stuff
 
