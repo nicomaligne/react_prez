@@ -35,6 +35,7 @@
     -   State reducer
     -   controlled props
         - https://medium.com/yazanaabed/advanced-react-patterns-7326f5a5ad1b
+        - https://blog.kentcdodds.com/when-to-use-control-props-or-state-reducers-6cd83e42c5b
 
 ### Perf
 
