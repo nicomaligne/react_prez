@@ -1,18 +1,19 @@
-1 - JSX
-1.1 - Virtual DOM
-1.2 - What do we write & what happened behind
+# JSX
 
-2 - Components ( find an example ( kind of same ) )
+-   Virtual DOM
+-   What do we write & what happened behind
 
-2.1 - React.Component
-2.2 - React.PureComponent
-2.2.1 - Should component update shallow equals
-2.3 - Functional Components / Stateless Components
-2.3.1 - What is it ? ( Colocation )
-2.3.2 - Recompose
-2.3 - React Context API
+# Components ( find an example ( kind of same ) )
 
-3 - React Basic Patterns
+-   React.Component
+-   React.PureComponent
+    -   Should component update shallow equals
+-   Functional Components / Stateless Components
+-   What is it ? ( Colocation )
+-   Recompose
+-   React Context API
+
+# React Basic Patterns
 
 ( ( conditional rendering) tester en Codepen -> array component with key & && look at renders )
 
@@ -22,7 +23,7 @@
 -   @Talend -> Inject ( optional )
     ( On perf side, HOC / Render props / FaC are pretty much the same)
 
-4 - React Advanced Patterns
+# React Advanced Patterns
 
 -   How to enforce a component API
 -   Compound
@@ -33,7 +34,7 @@
 -   Single element ( optional )
 -   Atomic element ( optional ( with single ))
 
-5 - Styled components ? ( see how much time we could have here )
+# Styled components ? ( see how much time we could have here )
 
 -   Vanilla CSS
 -   Inline Style
