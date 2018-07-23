@@ -18,7 +18,8 @@
     -   https://krasimir.gitbooks.io/react-in-patterns/content/
     -   https://reactpatterns.com/
     -   http://lucasmreis.github.io/blog/simple-react-patterns/
--   Single Element Pattern ?
+-   Single Element Pattern && Atomic Design
+    -   Atomic desgin by Brad Frost : http://bradfrost.com/blog/post/atomic-web-design/
     -   https://medium.freecodecamp.org/introducing-the-single-element-pattern-dfbd2c295c5d
 -   HOC -> What's a HOC ? When to use it ? Connect example
     -   https://levelup.gitconnected.com/understanding-react-higher-order-components-by-example-95e8c47c8006?ref=redditreact
