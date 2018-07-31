@@ -1,16 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Counter from './components/Counter.component';
+/* eslint-disable react/prefer-stateless-function */
 
-class App extends Component {
+import React from 'react';
+import { Link } from 'react-router-dom';
+// import './App.css';
+
+class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
-				<Counter />
+				<Link to="/stateless" href="/stateless">
+					<button>Stateless component</button>
+				</Link>
+				<Link to="/react-component" href="/react-component">
+					<button>React component</button>
+				</Link>
+				<Link to="/react-pure-component" href="/react-pure-component">
+					<button>React pure component</button>
+				</Link>
 			</div>
 		);
 	}
 }
 
 export default App;
+
+/* eslint-enable react/prefer-stateless-function */

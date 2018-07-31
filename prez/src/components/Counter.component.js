@@ -1,28 +1,34 @@
 import React from 'react';
+import Proptypes from 'prop-types';
 
 class Counter extends React.Component {
+	static propTypes = {
+		children: Proptypes.func.isRequired,
+	};
+
 	constructor(props) {
 		super(props);
 		this.state = { value: 10 };
 	}
 
-	increment = () => {
-		this.setState(prevState => {
-			value: prevState.value + 1;
-		});
+	increase = () => {
+		this.setState(prevState => ({
+			value: prevState.value + 1,
+		}));
 	};
 
 	decrease = () => {
-		this.setState(prevState => {
-			value: prevState.value - 1;
-		});
+		this.setState(prevState => ({
+			value: prevState.value - 1,
+		}));
 	};
 
 	render() {
+		console.log('render Counter');
 		return (
 			<React.Fragment>
-				<button onClick={this.increment}>+</button>
-				<button onClick={this.decrease}>-</button>
+				{this.state.value}
+				{this.props.children(this.increase, this.decrease)}
 			</React.Fragment>
 		);
 	}
