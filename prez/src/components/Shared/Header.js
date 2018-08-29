@@ -2,26 +2,35 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import './App.css';
+import styled from 'styled-components';
 
-class App extends React.Component {
+const LinkBar = styled.div`
+	text-align: center;
+`;
+
+const LinkButton = styled.button`
+	padding: 10px;
+	margin: 0 5px;
+`;
+
+class Links extends React.Component {
 	render() {
 		return (
-			<div className="App">
+			<LinkBar>
 				<Link to="/stateless" href="/stateless">
-					<button>Stateless component</button>
+					<LinkButton>Stateless component</LinkButton>
 				</Link>
 				<Link to="/react-component" href="/react-component">
-					<button>React component</button>
+					<LinkButton>React component</LinkButton>
 				</Link>
 				<Link to="/react-pure-component" href="/react-pure-component">
-					<button>React pure component</button>
+					<LinkButton>React pure component</LinkButton>
 				</Link>
-			</div>
+			</LinkBar>
 		);
 	}
 }
 
-export default App;
+export default Links;
 
 /* eslint-enable react/prefer-stateless-function */

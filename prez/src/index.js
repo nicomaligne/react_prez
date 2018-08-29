@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { injectGlobal } from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
-import Routes from './components/Routes.component';
-import './index.css';
-// import App from './App';
-// import registerServiceWorker from './registerServiceWorker';
+import Routes from './components/Shared/Routes.component';
 
 ReactDOM.render(
 	<BrowserRouter>
@@ -13,5 +11,11 @@ ReactDOM.render(
 	document.getElementById('root'),
 );
 
-// ReactDOM.render(<App />, document.getElementById('root'));
-// registerServiceWorker();
+injectGlobal`
+	@import url(‘https://fonts.googleapis.com/css?family=Montserrat:400,900|Roboto');	
+  	body {
+    	margin: 0;
+		padding: 0;
+		font-family: Roboto, sans-serif;
+  	}
+`;
