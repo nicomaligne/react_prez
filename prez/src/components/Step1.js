@@ -1,6 +1,8 @@
 import React from 'react'
 import { Accordion } from './Shared/Accordion.component'
-import { AccordionButton, AccordionItem, AccordionContents } from '../shared'
+import AccordionButton from './Shared/AccordionButton'
+import AccordionContents from './Shared/AccordionContents.component'
+import AccordionItem from './Shared/AccordionItem.component'
 
 function StandardAccordion({ items, ...props }) {
 	return (
@@ -27,4 +29,4 @@ function StandardAccordion({ items, ...props }) {
 	)
 }
 
-export { StandardAccordion }
+export default StandardAccordion

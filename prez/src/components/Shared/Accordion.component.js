@@ -4,6 +4,14 @@ import PropTypes from 'prop-types'
 export class Accordion extends React.Component {
 	static propTypes = {
 		openIndexes: PropTypes.array,
+		children: PropTypes.func,
+	}
+
+	constructor(props) {
+		super(props)
+		this.state = {
+			openIndexes: [0],
+		}
 	}
 
 	getState = (state = this.state) => ({
@@ -11,21 +19,18 @@ export class Accordion extends React.Component {
 			this.props.openIndexes === undefined ? state.openIndexes : this.props.openIndexes,
 	})
 
-	super(props) {
-		this.state = {
-			openIndexes: [0],
-		}
-	}
-
 	handleItemClick = index => {
 		this.setState(prevState => ({
-			openIndexes: this.state.openIndexes.includes(index)
+			openIndexes: prevState.openIndexes.includes(index)
 				? prevState.openIndexes.filter(i => i !== index)
 				: [...prevState.openIndexes, index],
 		}))
 	}
 
 	render() {
-		return this.props.children({ openIndexes: this.state.openIndexes, handleItemClick })
+		return this.props.children({
+			openIndexes: this.state.openIndexes,
+			handleItemClick: this.handleItemClick,
+		})
 	}
 }
