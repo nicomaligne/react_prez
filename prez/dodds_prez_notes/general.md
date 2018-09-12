@@ -5,6 +5,9 @@
 NB: Look at downshift => show pattern impl
 NB: Presentation more on rendering than behavior
 
+### step 0
+intro magistral jsx / children as func etc
+
 
 #### Step 1
 Simple Accordeon :
@@ -13,8 +16,6 @@ Simple Accordeon :
  - different icon per accordion
 
  <Accordion items={myItems} />
-
- #### Step 2
 
  Example of new business need :
  - text above (so caret icon have to point up and not down) => above={boolean}
@@ -34,7 +35,7 @@ you have a lots of feats you don't need
 
 ==> apropcalypse
 
- #### Step 3
+#### Step 2
 
  inversion of control to the rescue (children as func === render props / state reducer) 
  inverison of control === give control and responsability
@@ -45,7 +46,7 @@ Here show that when we give the rendering control to the user it can switch comp
 
 ===> But we have nothing to control the rendering api => Compound pattern ?
 
-#### Step 4 (Dodds prez, we will not do it like this, but the example is really cool)
+#### Step 3 (Dodds prez, we will not do it like this, but the example is really cool)
 
 WE HAVE TO SHOW HOW IT'S EASY TO HIDE TABS LOGIC BEHIND ACCORDION (using state logic and only change rendering)
 
@@ -62,3 +63,6 @@ More controlled rendering but props drilling
 #### Step 6 Solve props drilling with the api context and the provider pattern
 
 
+### Bonus step only slide
+
+state reducer / control props / styled components etc
