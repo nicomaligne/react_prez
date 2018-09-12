@@ -1,10 +1,9 @@
 import styled from 'styled-components'
 
 const AccordionItem = styled.div`
-	display: 'grid';
-	grid-template: 'auto auto';
-	grid-gap: 4;
-	grid-auto-flow: ${props => (props.direction === 'horizontal' ? 'column' : 'row')};
+	display: flex;
+	width: 600px;
+	flex-direction: ${props => (props.direction === 'horizontal' ? 'row' : 'column')};
 `
 
 export default AccordionItem
