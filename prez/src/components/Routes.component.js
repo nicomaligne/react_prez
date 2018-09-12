@@ -1,17 +1,29 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Stateless from './Stateless';
-import ReactComponent from './React-Component';
-import ReactPureComponent from './React-Pure-Component';
-import App from '../App.js';
+import React from 'react'
+import { Route, Switch } from 'react-router-dom'
+import Header from './Header'
+import Step1 from './Step1'
+import items from './Shared/data'
+import { Accordion } from './Compound'
+
+const myItems = [
+	{
+		title: 'ItemA',
+		content: 'Item A content',
+	},
+	{
+		title: 'ItemB',
+		content: 'Item B content',
+	},
+]
 
 export default function Routes() {
 	return (
-		<Switch>
-			<Route exact path="/" component={App} />
-			<Route path="/stateless" component={Stateless} />
-			<Route path="/react-component" component={ReactComponent} />
-			<Route path="/react-pure-component" component={ReactPureComponent} />
-		</Switch>
-	);
+		<React.Fragment>
+			<Header />
+			<Switch>
+				<Route path="/step1" render={() => <Step1 items={items} />} />
+				<Route path="/step2" render={() => <Accordion items={myItems} />} />
+			</Switch>
+		</React.Fragment>
+	)
 }
