@@ -4,7 +4,18 @@ import PropTypes from 'prop-types'
 const AccordionTabsContext = React.createContext()
 
 export default class BaseAccordionTabs extends React.Component {
-	static Consumer = AccordionTabsContext.Consumer
+	static Consumer = props => (
+		<AccordionTabsContext.Consumer {...props}>
+			{context => {
+				if (!context) {
+					throw new Error(
+						`AccordionTabs compound components cannot be rendered outside the BaseAccordionTabs component`,
+					)
+				}
+				return props.children(context)
+			}}
+		</AccordionTabsContext.Consumer>
+	)
 
 	static propTypes = {
 		// children: PropTypes.func,
@@ -14,11 +25,6 @@ export default class BaseAccordionTabs extends React.Component {
 	// To avoid undefined callback in setState
 	static defaultProps = {
 		handleClick: () => {},
-	}
-
-	// openedIndexes save wich items are opened
-	state = {
-		openedIndexes: [],
 	}
 
 	// Change the openedIndexes state value, and allow a external callback
@@ -32,6 +38,12 @@ export default class BaseAccordionTabs extends React.Component {
 		}, this.props.handleClick(index))
 	}
 
+	// openedIndexes save wich items are opened add event handler to state to avoid free rerender
+	state = {
+		openedIndexes: [],
+		onClick: this.handleClick,
+	}
+
 	// Children as function is mandatory, so we throw an error if children is not a func
 	render() {
 		// if (typeof this.props.children !== 'function') {
@@ -39,12 +51,7 @@ export default class BaseAccordionTabs extends React.Component {
 		// }
 		console.log('state', this.state)
 		return (
-			<AccordionTabsContext.Provider
-				value={{
-					openedIndexes: this.state.openedIndexes,
-					onClick: this.handleClick,
-				}}
-			>
+			<AccordionTabsContext.Provider value={this.state}>
 				{this.props.children}
 			</AccordionTabsContext.Provider>
 		)
