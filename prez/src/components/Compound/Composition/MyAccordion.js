@@ -15,7 +15,7 @@ const items = [
 export default class MyAccordion extends React.Component {
 	render() {
 		return (
-			<Accordion>
+			<Accordion handleClick={() => console.log('handleClick custom')}>
 				{items.map((
 					// eslint-disable-line
 					item,

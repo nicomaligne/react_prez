@@ -16,19 +16,19 @@ export default class BaseAccordionTabs extends React.Component {
 		handleClick: () => {},
 	}
 
-	// OpenIndexes save wich items are opened
+	// openedIndexes save wich items are opened
 	state = {
-		openIndexes: [],
+		openedIndexes: [],
 	}
 
-	// Change the openIndexes state value, and allow a external callback
+	// Change the openedIndexes state value, and allow a external callback
 	handleClick = index => {
 		this.setState(prevState => {
-			if (prevState.openIndexes.includes(index)) {
-				return { openIndexes: prevState.openIndexes.filter(open => open !== index) }
+			if (prevState.openedIndexes.includes(index)) {
+				return { openedIndexes: prevState.openedIndexes.filter(open => open !== index) }
 			}
-			prevState.openIndexes.push(index)
-			return { openIndexes: prevState.openIndexes }
+			prevState.openedIndexes.push(index)
+			return { openedIndexes: prevState.openedIndexes }
 		}, this.props.handleClick(index))
 	}
 
@@ -37,10 +37,11 @@ export default class BaseAccordionTabs extends React.Component {
 		// if (typeof this.props.children !== 'function') {
 		// 	throw new Error('Need children as function')
 		// }
+		console.log('state', this.state)
 		return (
 			<AccordionTabsContext.Provider
 				value={{
-					openIndexes: this.state.openIndexes,
+					openedIndexes: this.state.openedIndexes,
 					onClick: this.handleClick,
 				}}
 			>

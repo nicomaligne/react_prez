@@ -24,9 +24,13 @@ class Button extends React.Component {
 	}
 
 	onClick = () => {
+		const opened = this.props.openedIndexes && this.props.openedIndexes.includes(this.props.index) 
+		// if (this.props.index === 0) {
+		// 	console.log('value', opened, this.props.openedIndexes, this.props.index, this.props.onClick)
+		// }
 		this.setState(
 			prevState => ({
-				open: (this.props.opened && !this.props.opened) || !prevState.open,
+				open: !opened || !prevState.open,
 			}),
 			this.props.onClick(this.props.index),
 		)
@@ -38,7 +42,7 @@ class Button extends React.Component {
 }
 
 function Content(props) {
-	return props.opened ? <p>{props.children}</p> : null
+	return props.openedIndexes.includes(props.index) ? <p>{props.children}</p> : null
 }
 
 export { Item, Button, Content }

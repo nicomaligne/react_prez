@@ -18,15 +18,17 @@ class Accordion extends React.Component {
 
 	static Content = props => (
 		<BaseAccordionTabs.Consumer>
-			{({ openedIndexes }) => (
-				<Content {...props} openedIndexes={openedIndexes} />
-			)}
+			{({ openedIndexes }) => <Content {...props} openedIndexes={openedIndexes} />}
 		</BaseAccordionTabs.Consumer>
 	)
 
 	render() {
 		// Add a render default here ?
-		return <BaseAccordionTabs>{this.props.children}</BaseAccordionTabs>
+		return (
+			<BaseAccordionTabs handleClick={this.props.handleClick}>
+				{this.props.children}
+			</BaseAccordionTabs>
+		)
 	}
 }
 
