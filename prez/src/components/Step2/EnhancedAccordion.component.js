@@ -9,7 +9,7 @@ const OpenIndicator = styled.span`
 	margin-left: 10px;
 `
 
-export class BasicAccordion extends React.Component {
+export class EnhancedAccordion extends React.Component {
 	static propTypes = {
 		openIndexes: PropTypes.array,
 		items: PropTypes.array,
