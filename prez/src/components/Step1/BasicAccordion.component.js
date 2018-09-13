@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import AccordionButton from '../Shared/AccordionButton'
-import AccordionContents from '../Shared/AccordionContents.component'
-import AccordionItem from '../Shared/AccordionItem.component'
+import AccordionButton from './AccordionButton.component'
+import AccordionContents from './AccordionContents.component'
+import AccordionItem from './AccordionItem.component'
 
 const OpenIndicator = styled.span`
 	margin-left: 10px;
