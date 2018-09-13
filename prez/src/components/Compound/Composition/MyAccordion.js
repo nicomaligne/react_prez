@@ -16,15 +16,16 @@ export default class MyAccordion extends React.Component {
 	render() {
 		return (
 			<Accordion>
-				{({ openIndexes, onClick }) =>
-					items.map(item => ( // eslint-disable-line
-						<div>
-							<Accordion.Item title={item.title} />
-							<Accordion.Button onClick={onClick} />
-							<Accordion.Content>{item.content}</Accordion.Content>
-						</div>
-					))
-				}
+				{items.map((
+					// eslint-disable-line
+					item,
+					index,
+				) => (
+					<Accordion.Item title={item.title}>
+						<Accordion.Button index={index} />
+						<Accordion.Content index={index}>{item.content}</Accordion.Content>
+					</Accordion.Item>
+				))}
 			</Accordion>
 		)
 	}

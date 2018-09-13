@@ -1,58 +1,32 @@
 import React from 'react'
 import { BaseAccordionTabs } from '../Core'
-
-/*
-    Basic code for compound
-    Need to add more controlled stuff and the provider pattern
- */
-
-function AccordionItem(props) {
-	return <span>{props.title}</span>
-}
-
-/**
- * Compare wih indexes to allow manipulation from outside,
- * but with his own state
- */
-class AccordionButton extends React.Component {
-	state = {
-		open: false,
-	}
-
-	onClick = () => {
-		this.setState(
-			prevState => ({
-				open: !prevState.open,
-			}),
-			this.props.onClick(this.props.index, this.state.open),
-		)
-	}
-
-	render() {
-		return <button onClick={this.onClick}>{this.state.open ? 'open' : 'closed'}</button>
-	}
-}
-
-function AccordionContent(props) {
-	return <p>{props.children}</p>
-}
+import { Item, Button, Content } from './AccordionLibrary'
 
 /*
     Change name to my accordion the real component accordion is the base one
  */
 class Accordion extends React.Component {
-	static Item = AccordionItem
+	static Item = Item
 
-	static Button = AccordionButton
+	static Button = props => (
+		<BaseAccordionTabs.Consumer>
+			{({ onClick, openedIndexes }) => (
+				<Button {...props} onClick={onClick} openedIndexes={openedIndexes} />
+			)}
+		</BaseAccordionTabs.Consumer>
+	)
 
-	static Content = AccordionContent
+	static Content = props => (
+		<BaseAccordionTabs.Consumer>
+			{({ openedIndexes }) => (
+				<Content {...props} openedIndexes={openedIndexes} />
+			)}
+		</BaseAccordionTabs.Consumer>
+	)
 
 	render() {
-		return (
-			<BaseAccordionTabs>
-				{({ openIndexes, onClick }) => this.props.children({ openIndexes, onClick })}
-			</BaseAccordionTabs>
-		)
+		// Add a render default here ?
+		return <BaseAccordionTabs>{this.props.children}</BaseAccordionTabs>
 	}
 }
 
