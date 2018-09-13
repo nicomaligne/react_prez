@@ -3,18 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import Header from './Header'
 import Step1 from './Step1'
 import items from './Shared/data'
-import { Accordion } from './Compound'
-
-const myItems = [
-	{
-		title: 'ItemA',
-		content: 'Item A content',
-	},
-	{
-		title: 'ItemB',
-		content: 'Item B content',
-	},
-]
+import { MyAccordion } from './Compound/Composition'
 
 export default function Routes() {
 	return (
@@ -22,7 +11,7 @@ export default function Routes() {
 			<Header />
 			<Switch>
 				<Route path="/step1" render={() => <Step1 items={items} />} />
-				<Route path="/step2" render={() => <Accordion items={myItems} />} />
+				<Route path="/step2" render={() => <MyAccordion />} />
 			</Switch>
 		</React.Fragment>
 	)
