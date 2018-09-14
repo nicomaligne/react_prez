@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import classNames from 'classnames'
 import AccordionButton from '../Shared/AccordionButton.component'
 import AccordionContents from '../Shared/AccordionContents.component'
 import AccordionItem from '../Shared/AccordionItem.component'
@@ -77,6 +78,8 @@ export class EnhancedAccordion extends React.Component {
 				? 'vertical'
 				: 'horizontal'
 		const after = this.props.position === 'right' || this.props.position === 'beside'
+		const openClassName = classNames(this.props.contentClassName, this.props.openClassName)
+		const closeClassName = classNames(this.props.contentClassName, this.props.closeClassName)
 
 		if (this.props.tabs) {
 			return (
@@ -95,7 +98,7 @@ export class EnhancedAccordion extends React.Component {
 									</AccordionButton>
 								))}
 							</TabsContainer>
-							<AccordionContents className={this.props.contentClassName} isOpen>
+							<AccordionContents className={openClassName} isOpen>
 								{this.props.items[this.state.openIndexes[0]].contents}
 							</AccordionContents>
 						</div>
@@ -119,7 +122,11 @@ export class EnhancedAccordion extends React.Component {
 						)}
 
 						<AccordionContents
-							className={this.props.contentClassName}
+							className={
+								this.state.openIndexes.includes(index)
+									? openClassName
+									: closeClassName
+							}
 							isOpen={this.state.openIndexes.includes(index)}
 						>
 							{item.contents}
