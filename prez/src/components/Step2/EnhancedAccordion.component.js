@@ -1,13 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import AccordionButton from './AccordionButton.component'
-import AccordionContents from './AccordionContents.component'
-import AccordionItem from './AccordionItem.component'
-
-const OpenIndicator = styled.span`
-	margin-left: 10px;
-`
+import AccordionButton from '../Shared/AccordionButton.component'
+import AccordionContents from '../Shared/AccordionContents.component'
+import AccordionItem from '../Shared/AccordionItem.component'
 
 const TabsContainer = styled.div`
 	display: flex;
@@ -96,9 +92,6 @@ export class EnhancedAccordion extends React.Component {
 										onClick={() => this.handleItemClick(index)}
 									>
 										{item.title}
-										<OpenIndicator>
-											{this.state.openIndexes.includes(index) ? '🔽' : '🔼'}
-										</OpenIndicator>
 									</AccordionButton>
 								))}
 							</TabsContainer>
@@ -122,9 +115,6 @@ export class EnhancedAccordion extends React.Component {
 								onClick={() => this.handleItemClick(index)}
 							>
 								{item.title}
-								<OpenIndicator>
-									{this.state.openIndexes.includes(index) ? '🔽' : '🔼'}
-								</OpenIndicator>
 							</AccordionButton>
 						)}
 
@@ -142,9 +132,6 @@ export class EnhancedAccordion extends React.Component {
 								onClick={() => this.handleItemClick(index)}
 							>
 								{item.title}
-								<OpenIndicator>
-									{this.state.openIndexes.includes(index) ? '🔽' : '🔼'}
-								</OpenIndicator>
 							</AccordionButton>
 						)}
 					</AccordionItem>

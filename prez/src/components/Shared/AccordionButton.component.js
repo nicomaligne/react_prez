@@ -9,9 +9,7 @@ const Button = styled.button`
 	padding-bottom: 10px;
 	fontsize: 20px;
 	border: none;
-	background: ${props => {
-		return props.isOpen ? 'linear-gradient(to right, #5da288 20%, #17486e 80%)' : '#F6F6F6'
-	}};
+	background: ${props => (props.isOpen ? '#F3C446' : '#F6F6F6')};
 	color: ${props => (props.isOpen ? 'white' : 'black')};
 	&:focus {
 		outline: none;
