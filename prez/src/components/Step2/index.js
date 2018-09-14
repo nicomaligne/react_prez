@@ -7,8 +7,12 @@ const Container = styled.div`
 	flex-direction: column;
 
 	& form {
-		margin-bottom: 10px;
+		margin-bottom: 30px;
 	}
+`
+
+const LabelMarged = styled.label`
+	margin-right: 40px;
 `
 
 export class Accordion extends React.Component {
@@ -17,8 +21,7 @@ export class Accordion extends React.Component {
 		this.state = {
 			single: false,
 			preventClose: false,
-			openTrigger: '',
-			closeTrigger: '',
+			position: 'above',
 			titleClassName: '',
 			contentClassName: '',
 			onTrigger: () => {
@@ -36,12 +39,17 @@ export class Accordion extends React.Component {
 		this.setState(prevState => ({ ...prevState, [event.target.name]: event.target.checked }))
 	}
 
+	handleChange = event => {
+		event.persist()
+		this.setState(prevState => ({ ...prevState, [event.target.name]: event.target.value }))
+	}
+
 	render() {
 		return (
 			<Container>
 				<form>
 					<div>
-						<label htmlFor="single">
+						<LabelMarged htmlFor="single">
 							Single
 							<input
 								id="single"
@@ -50,8 +58,8 @@ export class Accordion extends React.Component {
 								checked={this.state.single}
 								onChange={this.changeCheckBoxStateAttribute}
 							/>
-						</label>
-						<label htmlFor="tabs">
+						</LabelMarged>
+						<LabelMarged htmlFor="tabs">
 							Tabs
 							<input
 								id="tabs"
@@ -60,7 +68,31 @@ export class Accordion extends React.Component {
 								checked={this.state.tabs}
 								onChange={this.changeCheckBoxStateAttribute}
 							/>
-						</label>
+						</LabelMarged>
+						<LabelMarged htmlFor="preventClose">
+							preventClose
+							<input
+								id="preventClose"
+								name="preventClose"
+								type="checkbox"
+								checked={this.state.preventClose}
+								onChange={this.changeCheckBoxStateAttribute}
+							/>
+						</LabelMarged>
+						<LabelMarged htmlFor="position">
+							Position:
+							<select
+								id="position"
+								name="position"
+								value={this.state.position}
+								onChange={this.handleChange}
+							>
+								<option value="above">above</option>
+								<option value="beside">beside</option>
+								<option value="left">left</option>
+								<option value="right">right</option>
+							</select>
+						</LabelMarged>
 					</div>
 				</form>
 				<div key={JSON.stringify(this.state)}>

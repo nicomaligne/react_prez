@@ -9,6 +9,10 @@ const OpenIndicator = styled.span`
 	margin-left: 10px;
 `
 
+const TabsContainer = styled.div`
+	display: flex;
+`
+
 export class EnhancedAccordion extends React.Component {
 	static propTypes = {
 		openIndexes: PropTypes.array,
@@ -16,14 +20,10 @@ export class EnhancedAccordion extends React.Component {
 		position: PropTypes.string,
 		single: PropTypes.bool,
 		preventClose: PropTypes.bool,
-		openTrigger: PropTypes.string,
-		closeTrigger: PropTypes.string,
 		titleClassName: PropTypes.string,
 		contentClassName: PropTypes.string,
-		onTrigger: PropTypes.func,
 		closeClassName: PropTypes.string,
 		openClassName: PropTypes.string,
-		renderExpandAllButton: PropTypes.bool,
 		tabs: PropTypes.bool,
 	}
 
@@ -40,7 +40,35 @@ export class EnhancedAccordion extends React.Component {
 	})
 
 	handleItemClick = index => {
-		this.setState(prevState => ({
+		if (this.props.tabs) {
+			return this.setState(prevState => ({
+				...prevState,
+				openIndexes: [index],
+			}))
+		}
+
+		if (this.props.preventClose) {
+			if (!this.state.openIndexes.includes(index)) {
+				return this.setState(prevState => ({
+					...prevState,
+					openIndexes: prevState.openIndexes.concat([index]),
+				}))
+			}
+			return this.state
+		}
+		if (this.props.single) {
+			if (this.state.openIndexes.includes(index)) {
+				return this.setState(prevState => ({
+					...prevState,
+					openIndexes: [],
+				}))
+			}
+			return this.setState(prevState => ({
+				...prevState,
+				openIndexes: [index],
+			}))
+		}
+		return this.setState(prevState => ({
 			openIndexes: prevState.openIndexes.includes(index)
 				? prevState.openIndexes.filter(i => i !== index)
 				: [...prevState.openIndexes, index],
@@ -48,22 +76,77 @@ export class EnhancedAccordion extends React.Component {
 	}
 
 	render() {
+		const direction =
+			this.props.position === 'above' || this.props.position === 'beside'
+				? 'vertical'
+				: 'horizontal'
+		const after = this.props.position === 'right' || this.props.position === 'beside'
+
+		if (this.props.tabs) {
+			return (
+				<div>
+					{this.props.tabs && (
+						<div>
+							<TabsContainer>
+								{this.props.items.map((item, index) => (
+									<AccordionButton
+										key={index}
+										className={this.props.titleClassName}
+										isOpen={this.state.openIndexes.includes(index)}
+										onClick={() => this.handleItemClick(index)}
+									>
+										{item.title}
+										<OpenIndicator>
+											{this.state.openIndexes.includes(index) ? '🔽' : '🔼'}
+										</OpenIndicator>
+									</AccordionButton>
+								))}
+							</TabsContainer>
+							<AccordionContents className={this.props.contentClassName} isOpen>
+								{this.props.items[this.state.openIndexes[0]].contents}
+							</AccordionContents>
+						</div>
+					)}
+				</div>
+			)
+		}
+
 		return (
 			<div>
 				{this.props.items.map((item, index) => (
-					<AccordionItem key={item.title} direction="vertical">
-						<AccordionButton
+					<AccordionItem key={item.title} direction={direction}>
+						{!after && (
+							<AccordionButton
+								className={this.props.titleClassName}
+								isOpen={this.state.openIndexes.includes(index)}
+								onClick={() => this.handleItemClick(index)}
+							>
+								{item.title}
+								<OpenIndicator>
+									{this.state.openIndexes.includes(index) ? '🔽' : '🔼'}
+								</OpenIndicator>
+							</AccordionButton>
+						)}
+
+						<AccordionContents
+							className={this.props.contentClassName}
 							isOpen={this.state.openIndexes.includes(index)}
-							onClick={() => this.handleItemClick(index)}
 						>
-							{item.title}
-							<OpenIndicator>
-								{this.state.openIndexes.includes(index) ? '🔽' : '🔼'}
-							</OpenIndicator>
-						</AccordionButton>
-						<AccordionContents isOpen={this.state.openIndexes.includes(index)}>
 							{item.contents}
 						</AccordionContents>
+
+						{after && (
+							<AccordionButton
+								className={this.props.titleClassName}
+								isOpen={this.state.openIndexes.includes(index)}
+								onClick={() => this.handleItemClick(index)}
+							>
+								{item.title}
+								<OpenIndicator>
+									{this.state.openIndexes.includes(index) ? '🔽' : '🔼'}
+								</OpenIndicator>
+							</AccordionButton>
+						)}
 					</AccordionItem>
 				))}
 			</div>

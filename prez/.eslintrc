@@ -16,6 +16,10 @@
 	"rules": {
 		"semi": [2, "never"],
 		"react/jsx-one-expression-per-line": "off",
+		"jsx-a11y/label-has-for": "off",
+		"jsx-a11y/label-has-associated-control": "off",
+		"react/no-array-index-key": "off",
+		"operator-linebreak": "off",
 		"no-unused-expressions": "off",
 		"react/forbid-prop-types": "off",
 		"react/require-default-props": "off",
