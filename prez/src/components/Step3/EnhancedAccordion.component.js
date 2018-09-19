@@ -1,9 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import classNames from 'classnames'
 import AccordionButton from '../Shared/AccordionButton.component'
 import AccordionContents from '../Shared/AccordionContents.component'
 import AccordionItem from '../Shared/AccordionItem.component'
+
+const TabsContainer = styled.div`
+	display: flex;
+`
 
 export class EnhancedAccordion extends React.Component {
 	static propTypes = {
@@ -16,6 +21,7 @@ export class EnhancedAccordion extends React.Component {
 		contentClassName: PropTypes.string,
 		closeClassName: PropTypes.string,
 		openClassName: PropTypes.string,
+		tabs: PropTypes.bool,
 	}
 
 	constructor(props) {
@@ -31,6 +37,13 @@ export class EnhancedAccordion extends React.Component {
 	})
 
 	handleItemClick = index => {
+		if (this.props.tabs) {
+			return this.setState(prevState => ({
+				...prevState,
+				openIndexes: [index],
+			}))
+		}
+
 		if (this.props.preventClose) {
 			if (!this.state.openIndexes.includes(index)) {
 				return this.setState(prevState => ({
@@ -67,6 +80,32 @@ export class EnhancedAccordion extends React.Component {
 		const after = this.props.position === 'right' || this.props.position === 'beside'
 		const openClassName = classNames(this.props.contentClassName, this.props.openClassName)
 		const closeClassName = classNames(this.props.contentClassName, this.props.closeClassName)
+
+		if (this.props.tabs) {
+			return (
+				<div>
+					{this.props.tabs && (
+						<div>
+							<TabsContainer>
+								{this.props.items.map((item, index) => (
+									<AccordionButton
+										key={index}
+										className={this.props.titleClassName}
+										isOpen={this.state.openIndexes.includes(index)}
+										onClick={() => this.handleItemClick(index)}
+									>
+										{item.title}
+									</AccordionButton>
+								))}
+							</TabsContainer>
+							<AccordionContents className={openClassName} isOpen>
+								{this.props.items[this.state.openIndexes[0]].contents}
+							</AccordionContents>
+						</div>
+					)}
+				</div>
+			)
+		}
 
 		return (
 			<div>
