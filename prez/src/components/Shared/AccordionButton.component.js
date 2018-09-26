@@ -9,7 +9,7 @@ const Button = styled.button`
 	padding-bottom: 10px;
 	fontsize: 20px;
 	border: none;
-	background: ${props => (props.isOpen ? '#F3C446' : '#F6F6F6')};
+	background: #f6f6f6;
 	color: ${props => (props.isOpen ? 'white' : 'black')};
 	&:focus {
 		outline: none;

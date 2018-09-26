@@ -18,4 +18,8 @@ injectGlobal`
 		padding: 0;
 		font-family: Roboto, sans-serif;
   	}
+
+	.opened {
+		background-color: #C2C2C2 !important;
+	}
 `

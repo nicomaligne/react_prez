@@ -10,11 +10,8 @@ export class BasicAccordion extends React.Component {
 		items: PropTypes.array,
 	}
 
-	constructor(props) {
-		super(props)
-		this.state = {
-			openIndexes: [0],
-		}
+	state = {
+		openIndexes: [0],
 	}
 
 	getState = (state = this.state) => ({
@@ -34,7 +31,7 @@ export class BasicAccordion extends React.Component {
 		return (
 			<div>
 				{this.props.items.map((item, index) => (
-					<AccordionItem key={item.title} direction="vertical">
+					<AccordionItem key={index}>
 						<AccordionButton
 							isOpen={this.state.openIndexes.includes(index)}
 							onClick={() => this.handleItemClick(index)}

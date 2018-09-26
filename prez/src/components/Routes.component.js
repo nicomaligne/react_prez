@@ -22,8 +22,14 @@ export default function Routes() {
 			<MainContainer>
 				<Switch>
 					<Route path="/step1" render={() => <Step1 items={items} />} />
-					<Route path="/step2" render={() => <Step2 items={items} />} />
-					<Route path="/step3" render={() => <Step3 items={items} />} />
+					<Route
+						path="/step2"
+						render={() => <Step2 items={items} openClassName="opened" />}
+					/>
+					<Route
+						path="/step3"
+						render={() => <Step3 items={items} openClassName="opened" />}
+					/>
 				</Switch>
 			</MainContainer>
 		</React.Fragment>
