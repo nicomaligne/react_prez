@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-// import classNames from 'classnames'
 import AccordionButton from '../Shared/AccordionButton.component'
 import AccordionContents from '../Shared/AccordionContents.component'
 import OpenIndexManager from './OpenIndexManager'
@@ -29,9 +28,7 @@ export default class CompoundTabs extends React.Component {
 
 	static Contents = props => (
 		<OpenIndexManager.Consumer>
-			{({ openIndexes }) => (
-				<AccordionContents {...props}>TOTO</AccordionContents>
-			)}
+			<AccordionContents {...props}>TOTO</AccordionContents>
 		</OpenIndexManager.Consumer>
 	)
 

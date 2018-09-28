@@ -7,12 +7,12 @@ import AccordionItem from '../Shared/AccordionItem.component'
 
 export default class CompoundAccordion extends React.Component {
 	static propTypes = {
+		closeClassName: PropTypes.string,
+		contentClassName: PropTypes.string,
 		items: PropTypes.array,
+		openClassName: PropTypes.string,
 		position: PropTypes.string,
 		titleClassName: PropTypes.string,
-		contentClassName: PropTypes.string,
-		closeClassName: PropTypes.string,
-		openClassName: PropTypes.string,
 	}
 
 	static Button = props => (
