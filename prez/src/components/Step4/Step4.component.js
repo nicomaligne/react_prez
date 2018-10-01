@@ -8,10 +8,16 @@ export default class Step4 extends React.Component {
 		return (
 			<PropsForm>
 				{props => (
-					<div>
-						<RenderPropsAccordion {...this.props} {...props} />
-						<RenderPropsTabs {...this.props} {...props} />
-					</div>
+					<React.Fragment>
+						<p>
+							<h3>Accordion</h3>
+							<RenderPropsAccordion {...this.props} {...props} />
+						</p>
+						<p>
+							<h3>Tabs</h3>
+							<RenderPropsTabs {...this.props} {...props} />
+						</p>
+					</React.Fragment>
 				)}
 			</PropsForm>
 		)

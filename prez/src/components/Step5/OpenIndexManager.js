@@ -37,12 +37,12 @@ export default class OpenIndexManager extends React.Component {
 			throw new Error('children is not a function')
 		}
 		return (
-			<div>
+			<React.Fragment>
 				{this.props.children({
 					handleItemClick: this.handleItemClick,
 					openIndexes: this.state.openIndexes,
 				})}
-			</div>
+			</React.Fragment>
 		)
 	}
 }
