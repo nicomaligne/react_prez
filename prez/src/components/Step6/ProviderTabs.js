@@ -26,11 +26,7 @@ export default class CompoundTabs extends React.Component {
 		</OpenIndexManager.Consumer>
 	)
 
-	static Contents = props => (
-		<OpenIndexManager.Consumer>
-			<AccordionContents {...props}>TOTO</AccordionContents>
-		</OpenIndexManager.Consumer>
-	)
+	static Contents = props => <AccordionContents {...props}>TOTO</AccordionContents>
 
 	render() {
 		return <OpenIndexManager>{this.props.children}</OpenIndexManager>
