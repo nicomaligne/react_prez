@@ -26,10 +26,6 @@ export class PropsForm extends React.Component {
 			single: false,
 			preventClose: false,
 			position: 'above',
-			// titleClassName: '',
-			// contentClassName: '',
-			// closeClassName: '',
-			// openClassName: '',
 			renderExpandAllButton: false,
 			tabs: false,
 		}
@@ -96,7 +92,7 @@ export class PropsForm extends React.Component {
 						</LabelMarged>
 					</div>
 				</form>
-				<div key={JSON.stringify(this.state)}>
+				<div>
 					{this.props.children({ ...this.props, ...this.state })}
 				</div>
 			</Container>

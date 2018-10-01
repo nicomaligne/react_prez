@@ -24,9 +24,12 @@ export default class RenderPropsAccordion extends React.Component {
 		const openClassName = classNames(this.props.contentClassName, this.props.openClassName)
 		const closeClassName = classNames(this.props.contentClassName, this.props.closeClassName)
 		return (
-			<OpenIndexManager>
+			<OpenIndexManager
+				single={this.props.single}
+				handlerOpenIndex={() => console.log('RenderPropsAccordion handlerOpenIndex')}
+			>
 				{({ handleItemClick, openIndexes }) =>
-					this.props.items.map(( //eslint-disable-line
+					this.props.items.map((//eslint-disable-line
 						item,
 						index,
 					) => (

@@ -1,28 +1,41 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
+const setSingleOpenIndexes = index => state => ({
+	...state,
+	openIndexes: state.openIndexes.includes(index) ? [] : [index],
+})
+
+const setOpenIndexes = index => state => ({
+	openIndexes: state.openIndexes.includes(index)
+		? state.openIndexes.filter(i => i !== index)
+		: [...state.openIndexes, index],
+})
 
 export default class OpenIndexManager extends React.Component {
+	static defaultProps = {
+		handlerOpenIndex: () => {},
+		single: false,
+	}
+
+	static propTypes = {
+		children: PropTypes.node,
+		handlerOpenIndex: PropTypes.func,
+		single: PropTypes.bool,
+	}
+
 	state = {
 		openIndexes: [0],
 	}
 
 	handleItemClick = index => {
 		if (this.props.single) {
-			if (this.state.openIndexes.includes(index)) {
-				return this.setState(prevState => ({
-					...prevState,
-					openIndexes: [],
-				}))
-			}
-			return this.setState(prevState => ({
-				...prevState,
-				openIndexes: [index],
-			}))
+			return this.setState(
+				setSingleOpenIndexes(index),
+				this.props.handlerOpenIndex,
+			)
 		}
-		return this.setState(prevState => ({
-			openIndexes: prevState.openIndexes.includes(index)
-				? prevState.openIndexes.filter(i => i !== index)
-				: [...prevState.openIndexes, index],
-		}))
+		return this.setState(setOpenIndexes(index), this.props.handlerOpenIndex)
 	}
 
 	render() {
