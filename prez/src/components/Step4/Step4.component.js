@@ -1,6 +1,6 @@
 import React from 'react'
-import ChildsAsFuncAccordion from './ChildAsFuncAccordion.component'
-import ChildAsFuncTabs from './ChildAsFuncTabs.component'
+import RenderPropsAccordion from './RenderPropsAccordion'
+import RenderPropsTabs from './RenderPropsTabs'
 import { PropsForm } from '../Shared/PropsForm.component'
 
 export default class Step4 extends React.Component {
@@ -9,8 +9,8 @@ export default class Step4 extends React.Component {
 			<PropsForm>
 				{props => (
 					<div>
-						<ChildsAsFuncAccordion {...this.props} {...props} />
-						<ChildAsFuncTabs {...this.props} {...props} />
+						<RenderPropsAccordion {...this.props} {...props} />
+						<RenderPropsTabs {...this.props} {...props} />
 					</div>
 				)}
 			</PropsForm>
