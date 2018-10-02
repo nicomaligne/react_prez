@@ -8,15 +8,15 @@ import AccordionItem from '../Shared/AccordionItem.component'
 
 export default class RenderPropsAccordion extends React.Component {
 	static propTypes = {
-		contentClassName: PropTypes.string,
 		items: PropTypes.arrayOf(
 			PropTypes.shape({ title: PropTypes.string, contents: PropTypes.string }),
 		),
 		openClassName: PropTypes.string,
-		titleClassName: PropTypes.string,
+		closeClassName: PropTypes.string,
 	}
 
 	render() {
+		console.log('this.props', this.props)
 		return (
 			<OpenIndexManager
 				handlerOpenIndex={() => console.log('RenderPropsAccordion handlerOpenIndex')}
@@ -26,11 +26,11 @@ export default class RenderPropsAccordion extends React.Component {
 					this.props.items.map((item, index) => (
 						<AccordionItem key={item.title} direction="horizontal">
 							<AccordionButton
-								className={
+								className={classNames(
 									openIndexes.includes(index)
-										? classNames(this.props.openClassName)
-										: null
-								}
+										? this.props.openClassName
+										: null,	
+								)}
 								isOpen={openIndexes.includes(index)}
 								onClick={() => handleItemClick(index)}
 							>
