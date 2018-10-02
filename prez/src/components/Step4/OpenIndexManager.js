@@ -36,7 +36,9 @@ export default class OpenIndexManager extends React.Component {
 
 	render() {
 		if (typeof this.props.children !== 'function') {
-			throw new Error('children is not a function')
+			throw new Error(
+				'OpenIndexManger this.props.children is not a function, this component implements children as function',
+			)
 		}
 		return (
 			<React.Fragment>
