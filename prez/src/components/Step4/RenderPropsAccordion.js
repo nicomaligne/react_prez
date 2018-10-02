@@ -26,19 +26,15 @@ export default class RenderPropsAccordion extends React.Component {
 					this.props.items.map((item, index) => (
 						<AccordionItem key={item.title} direction="horizontal">
 							<AccordionButton
-								className={this.props.titleClassName}
+								className={
+									openIndexes.includes(index) ? this.props.openClassName : null
+								}
 								isOpen={openIndexes.includes(index)}
 								onClick={() => handleItemClick(index)}
 							>
 								{item.title}
 							</AccordionButton>
-							<AccordionContents
-								className={classNames(
-									this.props.contentClassName,
-									this.props.openClassName
-								)}
-								isOpen={openIndexes.includes(index)}
-							>
+							<AccordionContents isOpen={openIndexes.includes(index)}>
 								{item.contents}
 							</AccordionContents>
 						</AccordionItem>
