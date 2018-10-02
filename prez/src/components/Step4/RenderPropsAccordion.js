@@ -16,7 +16,6 @@ export default class RenderPropsAccordion extends React.Component {
 	}
 
 	render() {
-		console.log('this.props', this.props)
 		return (
 			<OpenIndexManager
 				handlerOpenIndex={() => console.log('RenderPropsAccordion handlerOpenIndex')}
