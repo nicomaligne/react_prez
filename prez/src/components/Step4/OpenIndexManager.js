@@ -1,26 +1,38 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const setOpenIndexes = index => state => ({
+const preventClose = (openIndexes, index, preventClosingLastItem) => {
+	if (preventClosingLastItem && openIndexes.length > 0) {
+		return openIndexes
+	}
+	return openIndexes.filter(i => i !== index)
+}
+
+const setOpenIndexes = (index, preventClosingLastItem) => state => ({
 	...state,
-	openIndexes: state.openIndexes.includes(index) ? [] : [index],
+	openIndexes: state.openIndexes.includes(index)
+		? preventClose(state.openIndexes, index, preventClosingLastItem)
+		: [index],
 })
 
-const setMultiOpenIndexes = index => state => ({
+const setMultiOpenIndexes = (index, preventClosingLastItem) => state => ({
 	openIndexes: state.openIndexes.includes(index)
-		? state.openIndexes.filter(i => i !== index)
+		? preventClose(state.openIndexes, index, preventClosingLastItem)
 		: [...state.openIndexes, index],
 })
 
 export default class OpenIndexManager extends React.Component {
 	static defaultProps = {
 		handlerOpenIndex: () => {},
+		multiSelect: false,
+		preventClosingLastItem: false,
 	}
 
 	static propTypes = {
-		children: PropTypes.node,
+		children: PropTypes.func,
 		handlerOpenIndex: PropTypes.func,
 		multiSelect: PropTypes.bool,
+		preventClosingLastItem: PropTypes.bool,
 	}
 
 	state = {
@@ -29,9 +41,15 @@ export default class OpenIndexManager extends React.Component {
 
 	handleItemClick = index => {
 		if (this.props.multiSelect) {
-			return this.setState(setMultiOpenIndexes(index), this.props.handlerOpenIndex)
+			return this.setState(
+				setMultiOpenIndexes(index, this.props.preventClosingLastItem),
+				this.props.handlerOpenIndex,
+			)
 		}
-		return this.setState(setOpenIndexes(index), this.props.handlerOpenIndex)
+		return this.setState(
+			setOpenIndexes(index, this.props.preventClosingLastItem),
+			this.props.handlerOpenIndex,
+		)
 	}
 
 	render() {

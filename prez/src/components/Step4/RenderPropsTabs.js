@@ -22,7 +22,10 @@ export default class RenderPropsTabs extends React.Component {
 	render() {
 		const openClassName = classNames(this.props.contentClassName, this.props.openClassName)
 		return (
-			<OpenIndexManager>
+			<OpenIndexManager
+				handlerOpenIndex={() => console.log('RenderPropsTabs handlerOpenIndex')}
+				preventClosingLastItem
+			>
 				{({ openIndexes, handleItemClick }) => (
 					<React.Fragment>
 						<TabsContainer>
