@@ -28,11 +28,15 @@ export default class CompoundAccordion extends React.Component {
 	render() {
 		if (typeof this.props.children !== 'function') {
 			throw new Error(
-				'CompoundAccordion: this.props.children is not a function, this component implements children as function',
+				'ProviderAccordion: this.props.children is not a function, this component implements children as function',
 			)
 		}
 		return (
-			<OpenIndexManager {...this.props}>
+			<OpenIndexManager
+				handlerOpenIndex={console.log('Provider accordion handlerOpenIndex')}
+				multiSelect
+				{...this.props}
+			>
 				{({ handleItemClick, openIndexes }) =>
 					this.props.children({ handleItemClick, openIndexes })
 				}

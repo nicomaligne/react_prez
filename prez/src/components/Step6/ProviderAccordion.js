@@ -6,14 +6,7 @@ import AccordionContents from '../Shared/AccordionContents.component'
 import AccordionItem from '../Shared/AccordionItem.component'
 
 export default class CompoundAccordion extends React.Component {
-	static propTypes = {
-		closeClassName: PropTypes.string,
-		contentClassName: PropTypes.string,
-		items: PropTypes.array,
-		openClassName: PropTypes.string,
-		position: PropTypes.string,
-		titleClassName: PropTypes.string,
-	}
+	static propTypes = {}
 
 	static Button = props => (
 		<OpenIndexManager.Consumer>
@@ -35,22 +28,9 @@ export default class CompoundAccordion extends React.Component {
 		</OpenIndexManager.Consumer>
 	)
 
-	static Item = props => (
-		<AccordionItem
-			{...props}
-			direction={
-				props.position === 'above' || props.position === 'beside'
-					? 'vertical'
-					: 'horizontal'
-			}
-		/>
-	)
+	static Item = props => <AccordionItem {...props} direction="vertical" />
 
 	render() {
-		return (
-			<OpenIndexManager>
-				{this.props.children}
-			</OpenIndexManager>
-		)
+		return <OpenIndexManager {...this.props}>{this.props.children}</OpenIndexManager>
 	}
 }

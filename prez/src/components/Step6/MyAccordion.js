@@ -4,16 +4,13 @@ import ProviderAccordion from './ProviderAccordion'
 
 export default function MyAccordion(props) {
 	return (
-		<ProviderAccordion>
-			{props.items.map((
-				item,
-				index,
-			) => (
+		<ProviderAccordion
+			handlerOpenIndex={console.log('Provider Accordion handlerOpenIndex')}
+			multiSelect
+		>
+			{props.items.map((item, index) => (
 				<ProviderAccordion.Item key={item.title}>
-					<ProviderAccordion.Button
-						className={props.titleClassName}
-						index={index}
-					>
+					<ProviderAccordion.Button className={props.titleClassName} index={index}>
 						{item.title}
 					</ProviderAccordion.Button>
 					<ProviderAccordion.Contents index={index}>

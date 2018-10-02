@@ -21,8 +21,10 @@ export default class CompoundTabs extends React.Component {
 		/>
 	)
 
-	static Contents = ({ openIndexes, ...rest }) => (
-		<AccordionContents isOpen={openIndexes[0] >= 0} {...rest} />
+	static Contents = ({ openIndexes, items, ...rest }) => (
+		<AccordionContents isOpen={openIndexes[0] >= 0} {...rest}>
+			{openIndexes[0] >= 0 && items[openIndexes[0]].contents}
+		</AccordionContents>
 	)
 
 	render() {
