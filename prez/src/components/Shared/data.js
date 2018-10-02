@@ -2,9 +2,9 @@ const items = [
 	{
 		title: '🐴',
 		contents: `
-		Horses can sleep both lying down and standing up. Domestic horses have a lifespan of
-		around 25 years. A 19th century horse named Old Billy is said to have lived 62
-		years.
+				Horses can sleep both lying down and standing up. Domestic horses have a lifespan of
+				around 25 years. A 19th century horse named Old Billy is said to have lived 62
+				years.
 		`,
 	},
 	{
