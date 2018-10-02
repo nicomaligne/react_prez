@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const setSingleOpenIndexes = index => state => ({
+const setOpenIndexes = index => state => ({
 	...state,
 	openIndexes: state.openIndexes.includes(index) ? [] : [index],
 })
 
-const setOpenIndexes = index => state => ({
+const setMultiOpenIndexes = index => state => ({
 	openIndexes: state.openIndexes.includes(index)
 		? state.openIndexes.filter(i => i !== index)
 		: [...state.openIndexes, index],
@@ -15,13 +15,12 @@ const setOpenIndexes = index => state => ({
 export default class OpenIndexManager extends React.Component {
 	static defaultProps = {
 		handlerOpenIndex: () => {},
-		single: false,
 	}
 
 	static propTypes = {
 		children: PropTypes.node,
 		handlerOpenIndex: PropTypes.func,
-		single: PropTypes.bool,
+		multiSelect: PropTypes.bool,
 	}
 
 	state = {
@@ -29,11 +28,8 @@ export default class OpenIndexManager extends React.Component {
 	}
 
 	handleItemClick = index => {
-		if (this.props.single) {
-			return this.setState(
-				setSingleOpenIndexes(index),
-				this.props.handlerOpenIndex,
-			)
+		if (this.props.multiSelect) {
+			return this.setState(setMultiOpenIndexes(index), this.props.handlerOpenIndex)
 		}
 		return this.setState(setOpenIndexes(index), this.props.handlerOpenIndex)
 	}
