@@ -12,14 +12,16 @@ export default function MyTabs(props) {
 				{props.items.map((item, index) => (
 					<ProviderTabs.Button
 						key={item.title}
-						className={props.titleClassName}
 						index={index}
+						openClassName={props.openClassName}
 					>
 						{item.title}
 					</ProviderTabs.Button>
 				))}
 			</ProviderTabs.Container>
-			<ProviderTabs.Contents items={props.items} />
+			<ProviderTabs.Contents>
+					{openIndexes => openIndexes[0] >= 0 && props.items[openIndexes[0]].contents}
+			</ProviderTabs.Contents>
 		</ProviderTabs>
 	)
 }

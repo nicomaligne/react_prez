@@ -1,29 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import OpenIndexManager from './OpenIndexManager'
 import AccordionButton from '../Shared/AccordionButton.component'
 import AccordionContents from '../Shared/AccordionContents.component'
 import AccordionItem from '../Shared/AccordionItem.component'
 
 export default class CompoundAccordion extends React.Component {
-	static propTypes = {}
 
-	static Button = props => (
+	static Button = ({ index, openClassName, ...props }) => (
 		<OpenIndexManager.Consumer>
 			{({ openIndexes, handleItemClick }) => (
 				<AccordionButton
-					isOpen={openIndexes.includes(props.index)}
-					onClick={() => handleItemClick(props.index)}
+					className={classNames(openIndexes.includes(index) ? openClassName : null)}
+					isOpen={openIndexes.includes(index)}
+					onClick={() => handleItemClick(index)}
 					{...props}
 				/>
 			)}
 		</OpenIndexManager.Consumer>
 	)
 
-	static Contents = props => (
+	static Contents = ({ index, ...props}) => (
 		<OpenIndexManager.Consumer>
 			{({ openIndexes }) => (
-				<AccordionContents isOpen={openIndexes.includes(props.index)} {...props} />
+				<AccordionContents isOpen={openIndexes.includes(index)} {...props} />
 			)}
 		</OpenIndexManager.Consumer>
 	)
@@ -31,6 +32,6 @@ export default class CompoundAccordion extends React.Component {
 	static Item = props => <AccordionItem {...props} direction="vertical" />
 
 	render() {
-		return <OpenIndexManager {...this.props}>{this.props.children}</OpenIndexManager>
+		return <OpenIndexManager {...this.props}/>
 	}
 }

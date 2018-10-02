@@ -14,21 +14,19 @@ export default function MyTabs(props) {
 					<CompoundTabs.Container>
 						{props.items.map((item, index) => (
 							<CompoundTabs.Button
-								className={props.titleClassName}
 								handleItemClick={handleItemClick}
 								index={index}
 								key={item.title}
 								openIndexes={openIndexes}
+								openClassName={props.openClassName}
 							>
 								{item.title}
 							</CompoundTabs.Button>
 						))}
 					</CompoundTabs.Container>
-					<CompoundTabs.Contents
-						className={classNames(props.contentClassName, props.openClassName)}
-						openIndexes={openIndexes}
-						items={props.items}
-					/>
+					<CompoundTabs.Contents openIndexes={openIndexes}>
+						{openIndexes[0] >= 0 && props.items[openIndexes[0]].contents}
+					</CompoundTabs.Contents>
 				</React.Fragment>
 			)}
 		</CompoundTabs>

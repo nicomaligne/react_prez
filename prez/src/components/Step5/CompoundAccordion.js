@@ -11,11 +11,12 @@ export default class CompoundAccordion extends React.Component {
 		children: PropTypes.func,
 	}
 
-	static Button = props => (
+	static Button = ({ openIndexes, handleItemClick, openClassName, index, ...rest }) => (
 		<AccordionButton
-			isOpen={props.openIndexes.includes(props.index)}
-			onClick={() => props.handleItemClick(props.index)}
-			{...props}
+			className={classNames(openIndexes.includes(index) ? openClassName : null)}
+			isOpen={openIndexes.includes(index)}
+			onClick={() => handleItemClick(index)}
+			{...rest}
 		/>
 	)
 

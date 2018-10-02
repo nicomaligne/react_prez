@@ -13,7 +13,7 @@ export default function MyAccordion(props) {
 				props.items.map((item, index) => (
 					<CompoundAccordion.Item key={item.title}>
 						<CompoundAccordion.Button
-							className={props.titleClassName}
+							openClassName={props.openClassName}
 							openIndexes={openIndexes}
 							handleItemClick={handleItemClick}
 							index={index}
@@ -21,7 +21,6 @@ export default function MyAccordion(props) {
 							{item.title}
 						</CompoundAccordion.Button>
 						<CompoundAccordion.Contents
-							className={classNames(props.contentClassName, props.openClassName)}
 							openIndexes={openIndexes}
 							index={index}
 						>

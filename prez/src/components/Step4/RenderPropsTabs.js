@@ -6,7 +6,6 @@ import AccordionButton from '../Shared/AccordionButton.component'
 import AccordionContents from '../Shared/AccordionContents.component'
 import OpenIndexManager from './OpenIndexManager'
 
-// Move it to a specific component to keep consistency in example
 const TabsContainer = styled.div`
 	display: flex;
 `
@@ -31,7 +30,11 @@ export default class RenderPropsTabs extends React.Component {
 							{this.props.items.map((item, index) => (
 								<AccordionButton
 									key={index}
-									className={this.props.titleClassName}
+									className={
+										openIndexes.includes(index)
+											? this.props.openClassName
+											: null
+									}
 									isOpen={openIndexes.includes(index)}
 									onClick={() => handleItemClick(index)}
 								>
@@ -39,7 +42,7 @@ export default class RenderPropsTabs extends React.Component {
 								</AccordionButton>
 							))}
 						</TabsContainer>
-						<AccordionContents className={classNames(this.props.contentClassName, this.props.openClassName)} isOpen={openIndexes[0] >= 0}>
+						<AccordionContents isOpen={openIndexes[0] >= 0}>
 							{openIndexes[0] >= 0 && this.props.items[openIndexes[0]].contents}
 						</AccordionContents>
 					</React.Fragment>
