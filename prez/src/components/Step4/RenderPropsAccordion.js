@@ -8,7 +8,6 @@ import AccordionItem from '../Shared/AccordionItem.component'
 
 export default class RenderPropsAccordion extends React.Component {
 	static propTypes = {
-		closeClassName: PropTypes.string,
 		contentClassName: PropTypes.string,
 		items: PropTypes.arrayOf(
 			PropTypes.shape({ title: PropTypes.string, contents: PropTypes.string }),
@@ -36,9 +35,7 @@ export default class RenderPropsAccordion extends React.Component {
 							<AccordionContents
 								className={classNames(
 									this.props.contentClassName,
-									openIndexes.includes(index)
-										? this.props.openClassName
-										: this.props.closeClassName,
+									this.props.openClassName
 								)}
 								isOpen={openIndexes.includes(index)}
 							>

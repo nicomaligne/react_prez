@@ -5,16 +5,20 @@ import CompoundTabs from './CompoundTabs'
 
 export default function MyTabs(props) {
 	return (
-		<CompoundTabs>
+		<CompoundTabs
+			handlerOpenIndex={() => console.log('Compound Tabs handlerOpenIndex')}
+			preventClosingLastItem
+		>
 			{({ openIndexes, handleItemClick }) => (
 				<React.Fragment>
 					<CompoundTabs.Container>
 						{props.items.map((item, index) => (
 							<CompoundTabs.Button
-								key={index}
 								className={props.titleClassName}
-								isOpen={openIndexes.includes(index)}
-								onClick={() => handleItemClick(index)}
+								handleItemClick={handleItemClick}
+								index={index}
+								key={item.title}
+								openIndexes={openIndexes}
 							>
 								{item.title}
 							</CompoundTabs.Button>
@@ -22,9 +26,9 @@ export default function MyTabs(props) {
 					</CompoundTabs.Container>
 					<CompoundTabs.Contents
 						className={classNames(props.contentClassName, props.openClassName)}
-						isOpen
+						openIndexes={openIndexes}
 					>
-						{props.items[openIndexes[0]].contents}
+						{openIndexes[0] >= 0 && props.items[openIndexes[0]].contents}
 					</CompoundTabs.Contents>
 				</React.Fragment>
 			)}

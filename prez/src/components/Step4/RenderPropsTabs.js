@@ -20,7 +20,6 @@ export default class RenderPropsTabs extends React.Component {
 	}
 
 	render() {
-		const openClassName = classNames(this.props.contentClassName, this.props.openClassName)
 		return (
 			<OpenIndexManager
 				handlerOpenIndex={() => console.log('RenderPropsTabs handlerOpenIndex')}
@@ -40,7 +39,7 @@ export default class RenderPropsTabs extends React.Component {
 								</AccordionButton>
 							))}
 						</TabsContainer>
-						<AccordionContents className={openClassName} isOpen={openIndexes[0] >= 0}>
+						<AccordionContents className={classNames(this.props.contentClassName, this.props.openClassName)} isOpen={openIndexes[0] >= 0}>
 							{openIndexes[0] >= 0 && this.props.items[openIndexes[0]].contents}
 						</AccordionContents>
 					</React.Fragment>
