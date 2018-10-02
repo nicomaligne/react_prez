@@ -1,26 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import CompoundAccordion from './CompoundAccordion'
 
 export default function MyAccordion(props) {
 	return (
-		<CompoundAccordion>
+		<CompoundAccordion
+			handlerOpenIndex={console.log('Custom accordion handlerOpenIndex')}
+			multiSelect
+		>
 			{({ handleItemClick, openIndexes }) =>
-				props.items.map(( //eslint-disable-line
-					item,
-					index,
-				) => (
+				props.items.map((item, index) => (
 					<CompoundAccordion.Item key={item.title}>
 						<CompoundAccordion.Button
 							className={props.titleClassName}
-							isOpen={openIndexes.includes(index)}
-							onClick={() => handleItemClick(index)}
+							openIndexes={openIndexes}
+							handleItemClick={handleItemClick}
+							index={index}
 						>
 							{item.title}
 						</CompoundAccordion.Button>
 						<CompoundAccordion.Contents
-							className={openIndexes.includes(index)}
-							isOpen={openIndexes.includes(index)}
+							className={classNames(props.contentClassName, props.openClassName)}
+							openIndexes={openIndexes}
+							index={index}
 						>
 							{item.contents}
 						</CompoundAccordion.Contents>

@@ -8,32 +8,23 @@ import AccordionItem from '../Shared/AccordionItem.component'
 
 export default class RenderPropsAccordion extends React.Component {
 	static propTypes = {
-		items: PropTypes.array,
-		position: PropTypes.string,
-		titleClassName: PropTypes.string,
 		contentClassName: PropTypes.string,
-		closeClassName: PropTypes.string,
+		items: PropTypes.arrayOf(
+			PropTypes.shape({ title: PropTypes.string, contents: PropTypes.string }),
+		),
 		openClassName: PropTypes.string,
+		titleClassName: PropTypes.string,
 	}
 
 	render() {
-		const direction =
-			this.props.position === 'above' || this.props.position === 'beside'
-				? 'vertical'
-				: 'horizontal'
-		const openClassName = classNames(this.props.contentClassName, this.props.openClassName)
-		const closeClassName = classNames(this.props.contentClassName, this.props.closeClassName)
 		return (
 			<OpenIndexManager
 				handlerOpenIndex={() => console.log('RenderPropsAccordion handlerOpenIndex')}
 				multiSelect
 			>
 				{({ handleItemClick, openIndexes }) =>
-					this.props.items.map((//eslint-disable-line
-						item,
-						index,
-					) => (
-						<AccordionItem key={item.title} direction={direction}>
+					this.props.items.map((item, index) => (
+						<AccordionItem key={item.title} direction="horizontal">
 							<AccordionButton
 								className={this.props.titleClassName}
 								isOpen={openIndexes.includes(index)}
@@ -42,9 +33,10 @@ export default class RenderPropsAccordion extends React.Component {
 								{item.title}
 							</AccordionButton>
 							<AccordionContents
-								className={
-									openIndexes.includes(index) ? openClassName : closeClassName
-								}
+								className={classNames(
+									this.props.contentClassName,
+									this.props.openClassName
+								)}
 								isOpen={openIndexes.includes(index)}
 							>
 								{item.contents}
