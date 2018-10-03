@@ -20,7 +20,7 @@ export default class CompoundAccordion extends React.Component {
 		/>
 	)
 
-	static Contents = props => (
+	static Content = props => (
 		<Content isOpen={props.openIndexes.includes(props.index)} {...props} />
 	)
 

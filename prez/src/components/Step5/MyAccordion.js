@@ -20,12 +20,12 @@ export default function MyAccordion(props) {
 						>
 							{item.title}
 						</CompoundAccordion.Button>
-						<CompoundAccordion.Contents
+						<CompoundAccordion.Content
 							openIndexes={openIndexes}
 							index={index}
 						>
 							{item.contents}
-						</CompoundAccordion.Contents>
+						</CompoundAccordion.Content>
 					</CompoundAccordion.Item>
 				))
 			}

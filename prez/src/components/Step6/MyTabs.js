@@ -19,9 +19,9 @@ export default function MyTabs(props) {
 					</ProviderTabs.Button>
 				))}
 			</ProviderTabs.Container>
-			<ProviderTabs.Contents>
+			<ProviderTabs.Content>
 					{openIndexes => openIndexes[0] >= 0 && props.items[openIndexes[0]].contents}
-			</ProviderTabs.Contents>
+			</ProviderTabs.Content>
 		</ProviderTabs>
 	)
 }

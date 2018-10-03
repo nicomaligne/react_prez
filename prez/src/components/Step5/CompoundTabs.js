@@ -14,7 +14,7 @@ export default class CompoundTabs extends React.Component {
 	static Container = styled.div`
 		display: flex;
 	`
-	static Button = ({ openIndexes, handleItemClick, index, ...rest }) => (
+	static Button = ({ openIndexes, handleItemClick, openClassName, index, ...rest }) => (
 		<Button
 			isOpen={openIndexes.includes(index)}
 			className={classNames(openIndexes.includes(index) ? openClassName : null)}
@@ -23,10 +23,8 @@ export default class CompoundTabs extends React.Component {
 		/>
 	)
 
-	static Contents = ({ openIndexes, items, ...rest }) => (
-		<Content isOpen={openIndexes[0] >= 0} {...rest}>
-			{openIndexes[0] >= 0 && items[openIndexes[0]].contents}
-		</Content>
+	static Content = ({ openIndexes, ...rest }) => (
+		<Content isOpen={openIndexes[0] >= 0} {...rest} />
 	)
 
 	render() {

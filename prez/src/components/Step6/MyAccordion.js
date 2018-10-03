@@ -13,9 +13,9 @@ export default function MyAccordion(props) {
 					<ProviderAccordion.Button index={index} openClassName={props.openClassName}>
 						{item.title}
 					</ProviderAccordion.Button>
-					<ProviderAccordion.Contents index={index}>
+					<ProviderAccordion.Content index={index}>
 						{item.contents}
-					</ProviderAccordion.Contents>
+					</ProviderAccordion.Content>
 				</ProviderAccordion.Item>
 			))}
 		</ProviderAccordion>

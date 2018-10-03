@@ -21,7 +21,7 @@ export default class CompoundAccordion extends React.Component {
 		</OpenIndexManager.Consumer>
 	)
 
-	static Contents = ({ index, ...props}) => (
+	static Content = ({ index, ...props}) => (
 		<OpenIndexManager.Consumer>
 			{({ openIndexes }) => (
 				<Content isOpen={openIndexes.includes(index)} {...props} />

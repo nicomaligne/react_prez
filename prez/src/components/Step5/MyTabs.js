@@ -24,9 +24,9 @@ export default function MyTabs(props) {
 							</CompoundTabs.Button>
 						))}
 					</CompoundTabs.Container>
-					<CompoundTabs.Contents openIndexes={openIndexes}>
+					<CompoundTabs.Content openIndexes={openIndexes}>
 						{openIndexes[0] >= 0 && props.items[openIndexes[0]].contents}
-					</CompoundTabs.Contents>
+					</CompoundTabs.Content>
 				</React.Fragment>
 			)}
 		</CompoundTabs>

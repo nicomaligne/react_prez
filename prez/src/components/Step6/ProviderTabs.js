@@ -28,7 +28,7 @@ export default class CompoundTabs extends React.Component {
 		</OpenIndexManager.Consumer>
 	)
 
-	static Contents = ({ children, ...props }) => (
+	static Content = ({ children, ...props }) => (
 		<OpenIndexManager.Consumer>
 			{({ openIndexes }) => (
 				<Content isOpen={openIndexes[0] >= 0} {...props}>
