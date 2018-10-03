@@ -2,9 +2,9 @@ import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import OpenIndexManager from './OpenIndexManager'
-import AccordionButton from '../Shared/AccordionButton.component'
-import AccordionContents from '../Shared/AccordionContents.component'
-import AccordionItem from '../Shared/AccordionItem.component'
+import Button from '../Shared/Button.component'
+import Content from '../Shared/Content.component'
+import Item from '../Shared/Item.component'
 
 export default class RenderPropsAccordion extends React.Component {
 	static propTypes = {
@@ -24,24 +24,24 @@ export default class RenderPropsAccordion extends React.Component {
 			>
 				{({ handleItemClick, openIndexes }) =>
 					this.props.items.map((item, index) => (
-						<AccordionItem key={item.title} direction="horizontal">
-							<AccordionButton
+						<Item key={item.title} direction="horizontal">
+							<Button
 								className={this.props.titleClassName}
 								isOpen={openIndexes.includes(index)}
 								onClick={() => handleItemClick(index)}
 							>
 								{item.title}
-							</AccordionButton>
-							<AccordionContents
+							</Button>
+							<Content
 								className={classNames(
 									this.props.contentClassName,
-									this.props.openClassName
+									this.props.openClassName,
 								)}
 								isOpen={openIndexes.includes(index)}
 							>
 								{item.contents}
-							</AccordionContents>
-						</AccordionItem>
+							</Content>
+						</Item>
 					))
 				}
 			</OpenIndexManager>

@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import OpenIndexManager from './OpenIndexManager'
-import AccordionButton from '../Shared/AccordionButton.component'
-import AccordionContents from '../Shared/AccordionContents.component'
-import AccordionItem from '../Shared/AccordionItem.component'
+import Button from '../Shared/Button.component'
+import Content from '../Shared/Content.component'
+import Item from '../Shared/Item.component'
 
 export default class CompoundAccordion extends React.Component {
 	static propTypes = {
@@ -12,7 +12,7 @@ export default class CompoundAccordion extends React.Component {
 	}
 
 	static Button = props => (
-		<AccordionButton
+		<Button
 			isOpen={props.openIndexes.includes(props.index)}
 			onClick={() => props.handleItemClick(props.index)}
 			{...props}
@@ -20,10 +20,10 @@ export default class CompoundAccordion extends React.Component {
 	)
 
 	static Contents = props => (
-		<AccordionContents isOpen={props.openIndexes.includes(props.index)} {...props} />
+		<Content isOpen={props.openIndexes.includes(props.index)} {...props} />
 	)
 
-	static Item = props => <AccordionItem {...props} />
+	static Item = props => <Item {...props} />
 
 	render() {
 		if (typeof this.props.children !== 'function') {

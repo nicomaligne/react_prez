@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import AccordionButton from '../Shared/AccordionButton.component'
-import AccordionContents from '../Shared/AccordionContents.component'
-import AccordionItem from '../Shared/AccordionItem.component'
+import Button from '../Shared/Button.component'
+import Content from '../Shared/Content.component'
+import Item from '../Shared/Item.component'
 
 export class BasicAccordion extends React.Component {
 	static propTypes = {
@@ -31,17 +31,17 @@ export class BasicAccordion extends React.Component {
 		return (
 			<div>
 				{this.props.items.map((item, index) => (
-					<AccordionItem key={index}>
-						<AccordionButton
+					<Item key={index}>
+						<Button
 							isOpen={this.state.openIndexes.includes(index)}
 							onClick={() => this.handleItemClick(index)}
 						>
 							{item.title}
-						</AccordionButton>
-						<AccordionContents isOpen={this.state.openIndexes.includes(index)}>
+						</Button>
+						<Content isOpen={this.state.openIndexes.includes(index)}>
 							{item.contents}
-						</AccordionContents>
-					</AccordionItem>
+						</Content>
+					</Item>
 				))}
 			</div>
 		)
