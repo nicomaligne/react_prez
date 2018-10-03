@@ -10,7 +10,7 @@ const TabsContainer = styled.div`
 	display: flex;
 `
 
-export class EnhancedAccordion extends React.Component {
+export class EnhancedAccordionAndTab extends React.Component {
 	static propTypes = {
 		openIndexes: PropTypes.array,
 		items: PropTypes.array,
