@@ -23,8 +23,8 @@ export class PropsForm extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			single: false,
-			preventClose: false,
+			multiSelect: true,
+			preventClosingLastItem: false,
 			position: 'above',
 			renderExpandAllButton: false,
 			tabs: false,
@@ -46,13 +46,13 @@ export class PropsForm extends React.Component {
 			<Container>
 				<form>
 					<div>
-						<LabelMarged htmlFor="single">
-							Single
+						<LabelMarged htmlFor="multiSelect">
+							multiSelect
 							<input
-								id="single"
-								name="single"
+								id="multiSelect"
+								name="multiSelect"
 								type="checkbox"
-								checked={this.state.single}
+								checked={this.state.multiSelect}
 								onChange={this.changeCheckBoxStateAttribute}
 							/>
 						</LabelMarged>
@@ -66,13 +66,13 @@ export class PropsForm extends React.Component {
 								onChange={this.changeCheckBoxStateAttribute}
 							/>
 						</LabelMarged>
-						<LabelMarged htmlFor="preventClose">
-							preventClose
+						<LabelMarged htmlFor="preventClosingLastItem">
+							preventClosingLastItem
 							<input
-								id="preventClose"
-								name="preventClose"
+								id="preventClosingLastItem"
+								name="preventClosingLastItem"
 								type="checkbox"
-								checked={this.state.preventClose}
+								checked={this.state.preventClosingLastItem}
 								onChange={this.changeCheckBoxStateAttribute}
 							/>
 						</LabelMarged>
@@ -92,9 +92,7 @@ export class PropsForm extends React.Component {
 						</LabelMarged>
 					</div>
 				</form>
-				<div>
-					{this.props.children({ ...this.props, ...this.state })}
-				</div>
+				<div>{this.props.children({ ...this.props, ...this.state })}</div>
 			</Container>
 		)
 	}

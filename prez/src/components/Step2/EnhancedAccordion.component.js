@@ -5,6 +5,26 @@ import Button from '../Shared/Button.component'
 import Content from '../Shared/Content.component'
 import Item from '../Shared/Item.component'
 
+const preventClose = (openIndexes, index, preventClosingLastItem) => {
+	if (preventClosingLastItem && openIndexes.length === 1) {
+		return openIndexes
+	}
+	return openIndexes.filter(i => i !== index)
+}
+
+const setOpenIndexes = (index, preventClosingLastItem) => state => ({
+	...state,
+	openIndexes: state.openIndexes.includes(index)
+		? preventClose(state.openIndexes, index, preventClosingLastItem)
+		: [index],
+})
+
+const setMultiOpenIndexes = (index, preventClosingLastItem) => state => ({
+	openIndexes: state.openIndexes.includes(index)
+		? preventClose(state.openIndexes, index, preventClosingLastItem)
+		: [...state.openIndexes, index],
+})
+
 export class EnhancedAccordion extends React.Component {
 	static propTypes = {
 		openIndexes: PropTypes.array,
@@ -31,32 +51,16 @@ export class EnhancedAccordion extends React.Component {
 	})
 
 	handleItemClick = index => {
-		if (this.props.preventClose) {
-			if (!this.state.openIndexes.includes(index)) {
-				return this.setState(prevState => ({
-					...prevState,
-					openIndexes: prevState.openIndexes.concat([index]),
-				}))
-			}
-			return this.state
+		if (this.props.multiSelect) {
+			return this.setState(
+				setMultiOpenIndexes(index, this.props.preventClosingLastItem),
+				this.props.handlerOpenIndex,
+			)
 		}
-		if (this.props.single) {
-			if (this.state.openIndexes.includes(index)) {
-				return this.setState(prevState => ({
-					...prevState,
-					openIndexes: [],
-				}))
-			}
-			return this.setState(prevState => ({
-				...prevState,
-				openIndexes: [index],
-			}))
-		}
-		return this.setState(prevState => ({
-			openIndexes: prevState.openIndexes.includes(index)
-				? prevState.openIndexes.filter(i => i !== index)
-				: [...prevState.openIndexes, index],
-		}))
+		return this.setState(
+			setOpenIndexes(index, this.props.preventClosingLastItem),
+			this.props.handlerOpenIndex,
+		)
 	}
 
 	render() {

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const OpenIndexManagerContext = React.createContext()
 
 const preventClose = (openIndexes, index, preventClosingLastItem) => {
-	if (preventClosingLastItem && openIndexes.length > 0) {
+	if (preventClosingLastItem && openIndexes.length === 1) {
 		return openIndexes
 	}
 	return openIndexes.filter(i => i !== index)
