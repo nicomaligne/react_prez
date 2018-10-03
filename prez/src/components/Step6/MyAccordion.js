@@ -10,12 +10,12 @@ export default function MyAccordion(props) {
 		>
 			{props.items.map((item, index) => (
 				<ProviderAccordion.Item key={item.title}>
-					<ProviderAccordion.Button className={props.titleClassName} index={index}>
+					<ProviderAccordion.Button index={index} openClassName={props.openClassName}>
 						{item.title}
 					</ProviderAccordion.Button>
-					<ProviderAccordion.Contents index={index}>
+					<ProviderAccordion.Content index={index}>
 						{item.contents}
-					</ProviderAccordion.Contents>
+					</ProviderAccordion.Content>
 				</ProviderAccordion.Item>
 			))}
 		</ProviderAccordion>

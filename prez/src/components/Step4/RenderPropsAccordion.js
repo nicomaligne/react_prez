@@ -8,12 +8,11 @@ import Item from '../Shared/Item.component'
 
 export default class RenderPropsAccordion extends React.Component {
 	static propTypes = {
-		contentClassName: PropTypes.string,
 		items: PropTypes.arrayOf(
 			PropTypes.shape({ title: PropTypes.string, contents: PropTypes.string }),
 		),
 		openClassName: PropTypes.string,
-		titleClassName: PropTypes.string,
+		closeClassName: PropTypes.string,
 	}
 
 	render() {
@@ -26,21 +25,15 @@ export default class RenderPropsAccordion extends React.Component {
 					this.props.items.map((item, index) => (
 						<Item key={item.title} direction="horizontal">
 							<Button
-								className={this.props.titleClassName}
+								className={classNames(
+									openIndexes.includes(index) ? this.props.openClassName : null,
+								)}
 								isOpen={openIndexes.includes(index)}
 								onClick={() => handleItemClick(index)}
 							>
 								{item.title}
 							</Button>
-							<Content
-								className={classNames(
-									this.props.contentClassName,
-									this.props.openClassName,
-								)}
-								isOpen={openIndexes.includes(index)}
-							>
-								{item.contents}
-							</Content>
+							<Content isOpen={openIndexes.includes(index)}>{item.contents}</Content>
 						</Item>
 					))
 				}

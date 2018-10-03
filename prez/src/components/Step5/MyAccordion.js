@@ -13,20 +13,19 @@ export default function MyAccordion(props) {
 				props.items.map((item, index) => (
 					<CompoundAccordion.Item key={item.title}>
 						<CompoundAccordion.Button
-							className={props.titleClassName}
+							openClassName={props.openClassName}
 							openIndexes={openIndexes}
 							handleItemClick={handleItemClick}
 							index={index}
 						>
 							{item.title}
 						</CompoundAccordion.Button>
-						<CompoundAccordion.Contents
-							className={classNames(props.contentClassName, props.openClassName)}
+						<CompoundAccordion.Content
 							openIndexes={openIndexes}
 							index={index}
 						>
 							{item.contents}
-						</CompoundAccordion.Contents>
+						</CompoundAccordion.Content>
 					</CompoundAccordion.Item>
 				))
 			}

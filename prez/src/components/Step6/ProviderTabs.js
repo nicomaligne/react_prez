@@ -15,33 +15,30 @@ export default class CompoundTabs extends React.Component {
 		display: flex;
 	`
 
-	static Button = props => (
+	static Button = ({ index, openClassName, ...props }) => (
 		<OpenIndexManager.Consumer>
 			{({ handleItemClick, openIndexes }) => (
 				<Button
+					className={classNames(openIndexes.includes(index) ? openClassName : null)}
+					isOpen={openIndexes.includes(index)}
+					onClick={() => handleItemClick(index)}
 					{...props}
-					isOpen={openIndexes.includes(props.index)}
-					onClick={() => handleItemClick(props.index)}
 				/>
 			)}
 		</OpenIndexManager.Consumer>
 	)
 
-	static Contents = props => (
+	static Content = ({ children, ...props }) => (
 		<OpenIndexManager.Consumer>
 			{({ openIndexes }) => (
-				<Content
-					className={classNames(props.contentClassName, props.openClassName)}
-					isOpen={openIndexes[0] >= 0}
-					{...props}
-				>
-					{openIndexes[0] >= 0 && props.items[openIndexes[0]].contents}
+				<Content isOpen={openIndexes[0] >= 0} {...props}>
+					{typeof children === 'function' ? children(openIndexes) : children}
 				</Content>
 			)}
 		</OpenIndexManager.Consumer>
 	)
 
 	render() {
-		return <OpenIndexManager {...this.props}>{this.props.children}</OpenIndexManager>
+		return <OpenIndexManager {...this.props} />
 	}
 }
