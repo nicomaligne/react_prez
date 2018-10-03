@@ -2,15 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import classNames from 'classnames'
-import AccordionButton from '../Shared/AccordionButton.component'
-import AccordionContents from '../Shared/AccordionContents.component'
-import AccordionItem from '../Shared/AccordionItem.component'
+import Button from '../Shared/Button.component'
+import Content from '../Shared/Content.component'
+import Item from '../Shared/Item.component'
 
 const TabsContainer = styled.div`
 	display: flex;
 `
 
-export class EnhancedAccordion extends React.Component {
+export class EnhancedAccordionAndTab extends React.Component {
 	static propTypes = {
 		openIndexes: PropTypes.array,
 		items: PropTypes.array,
@@ -96,7 +96,7 @@ export class EnhancedAccordion extends React.Component {
 						<div>
 							<TabsContainer>
 								{this.props.items.map((item, index) => (
-									<AccordionButton
+									<Button
 										key={index}
 										className={
 											this.state.openIndexes.includes(index)
@@ -107,12 +107,12 @@ export class EnhancedAccordion extends React.Component {
 										onClick={() => this.handleItemClick(index)}
 									>
 										{item.title}
-									</AccordionButton>
+									</Button>
 								))}
 							</TabsContainer>
-							<AccordionContents isOpen>
+							<Content isOpen>
 								{this.props.items[this.state.openIndexes[0]].contents}
-							</AccordionContents>
+							</Content>
 						</div>
 					)}
 				</div>
@@ -122,9 +122,9 @@ export class EnhancedAccordion extends React.Component {
 		return (
 			<div>
 				{this.props.items.map((item, index) => (
-					<AccordionItem key={item.title} direction={direction}>
+					<Item key={item.title} direction={direction}>
 						{!after && (
-							<AccordionButton
+							<Button
 								className={
 									this.state.openIndexes.includes(index)
 										? openClassName
@@ -134,15 +134,15 @@ export class EnhancedAccordion extends React.Component {
 								onClick={() => this.handleItemClick(index)}
 							>
 								{item.title}
-							</AccordionButton>
+							</Button>
 						)}
 
-						<AccordionContents isOpen={this.state.openIndexes.includes(index)}>
+						<Content isOpen={this.state.openIndexes.includes(index)}>
 							{item.contents}
-						</AccordionContents>
+						</Content>
 
 						{after && (
-							<AccordionButton
+							<Button
 								className={
 									this.state.openIndexes.includes(index)
 										? openClassName
@@ -152,9 +152,9 @@ export class EnhancedAccordion extends React.Component {
 								onClick={() => this.handleItemClick(index)}
 							>
 								{item.title}
-							</AccordionButton>
+							</Button>
 						)}
-					</AccordionItem>
+					</Item>
 				))}
 			</div>
 		)

@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import classNames from 'classnames'
-import AccordionButton from '../Shared/AccordionButton.component'
-import AccordionContents from '../Shared/AccordionContents.component'
+import Button from '../Shared/Button.component'
+import Content from '../Shared/Content.component'
 import OpenIndexManager from './OpenIndexManager'
 
 const TabsContainer = styled.div`
@@ -28,7 +28,7 @@ export default class RenderPropsTabs extends React.Component {
 					<React.Fragment>
 						<TabsContainer>
 							{this.props.items.map((item, index) => (
-								<AccordionButton
+								<Button
 									key={index}
 									className={
 										openIndexes.includes(index)
@@ -39,12 +39,12 @@ export default class RenderPropsTabs extends React.Component {
 									onClick={() => handleItemClick(index)}
 								>
 									{item.title}
-								</AccordionButton>
+								</Button>
 							))}
 						</TabsContainer>
-						<AccordionContents isOpen={openIndexes[0] >= 0}>
+						<Content isOpen={openIndexes[0] >= 0}>
 							{openIndexes[0] >= 0 && this.props.items[openIndexes[0]].contents}
-						</AccordionContents>
+						</Content>
 					</React.Fragment>
 				)}
 			</OpenIndexManager>

@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import classNames from 'classnames'
-import AccordionButton from '../Shared/AccordionButton.component'
-import AccordionContents from '../Shared/AccordionContents.component'
+import Button from '../Shared/Button.component'
+import Content from '../Shared/Content.component'
 import OpenIndexManager from './OpenIndexManager'
 
 export default class CompoundTabs extends React.Component {
@@ -14,8 +14,8 @@ export default class CompoundTabs extends React.Component {
 	static Container = styled.div`
 		display: flex;
 	`
-	static Button = ({ openIndexes, handleItemClick, index, openClassName, ...rest }) => (
-		<AccordionButton
+	static Button = ({ openIndexes, handleItemClick, index, ...rest }) => (
+		<Button
 			isOpen={openIndexes.includes(index)}
 			className={classNames(openIndexes.includes(index) ? openClassName : null)}
 			onClick={() => handleItemClick(index)}
@@ -24,7 +24,9 @@ export default class CompoundTabs extends React.Component {
 	)
 
 	static Contents = ({ openIndexes, items, ...rest }) => (
-		<AccordionContents isOpen={openIndexes[0] >= 0} {...rest} />
+		<Content isOpen={openIndexes[0] >= 0} {...rest}>
+			{openIndexes[0] >= 0 && items[openIndexes[0]].contents}
+		</Content>
 	)
 
 	render() {
