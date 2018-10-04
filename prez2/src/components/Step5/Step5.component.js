@@ -1,16 +1,16 @@
 import React from 'react'
-import MyAccordion from './MyAccordion'
-import MyTabs from './MyTabs'
+import Accordion from './Accordion'
+import Tabs from './Tabs'
 
 const Step5 = props => (
 	<div>
 		<section>
 			<h3>Accordion</h3>
-			<MyAccordion {...props} />
+			<Accordion {...props} />
 		</section>
 		<section>
 			<h3>Tabs</h3>
-			<MyTabs {...props} />
+			<Tabs {...props} />
 		</section>
 	</div>
 )

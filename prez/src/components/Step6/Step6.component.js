@@ -1,6 +1,6 @@
 import React from 'react'
-import MyAccordion from './MyAccordion'
-import MyTabs from './MyTabs'
+import Accordion from './Accordion'
+import Tabs from './Tabs'
 
 export default class Step6 extends React.Component {
 	render() {
@@ -8,11 +8,11 @@ export default class Step6 extends React.Component {
 			<div>
 				<section>
 					<h3>Accordion</h3>
-					<MyAccordion {...this.props} />
+					<Accordion {...this.props} />
 				</section>
 				<section>
 					<h3>Tabs</h3>
-					<MyTabs {...this.props} />
+					<Tabs {...this.props} />
 				</section>
 			</div>
 		)

@@ -1,31 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import CompoundAccordion from './CompoundAccordion'
+import classNames from 'classnames'
+import CompoundAccordionApi from './CompoundAccordionApi'
 
-export default function MyAccordion(props) {
+export default function Accordion(props) {
 	return (
-		<CompoundAccordion
+		<CompoundAccordionApi
 			handlerOpenIndex={console.log('Custom accordion handlerOpenIndex')}
 			multiSelect
 		>
 			{({ handleItemClick, openIndexes }) =>
 				props.items.map((item, index) => (
-					<CompoundAccordion.Item key={item.title}>
-						<CompoundAccordion.Button
+					<CompoundAccordionApi.Item key={item.title}>
+						<CompoundAccordionApi.Button
 							openClassName={props.openClassName}
 							openIndexes={openIndexes}
 							handleItemClick={handleItemClick}
 							index={index}
 						>
 							{item.title}
-						</CompoundAccordion.Button>
-						<CompoundAccordion.Content openIndexes={openIndexes} index={index}>
+						</CompoundAccordionApi.Button>
+						<CompoundAccordionApi.Content
+							openIndexes={openIndexes}
+							index={index}
+						>
 							{item.contents}
-						</CompoundAccordion.Content>
-					</CompoundAccordion.Item>
+						</CompoundAccordionApi.Content>
+					</CompoundAccordionApi.Item>
 				))
 			}
-		</CompoundAccordion>
+		</CompoundAccordionApi>
 	)
 }
 

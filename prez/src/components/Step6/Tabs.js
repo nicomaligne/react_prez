@@ -1,28 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ProviderTabs from './ProviderTabs'
+import ProviderTabsApi from './ProviderTabsApi'
 
 export default function MyTabs(props) {
 	return (
-		<ProviderTabs
+		<ProviderTabsApi
 			handlerOpenIndex={() => console.log('Provider Tabs handlerOpenIndex')}
 			preventClosingLastItem
 		>
-			<ProviderTabs.Container>
+			<ProviderTabsApi.Container>
 				{props.items.map((item, index) => (
-					<ProviderTabs.Button
+					<ProviderTabsApi.Button
 						key={item.title}
 						index={index}
 						openClassName={props.openClassName}
 					>
 						{item.title}
-					</ProviderTabs.Button>
+					</ProviderTabsApi.Button>
 				))}
-			</ProviderTabs.Container>
-			<ProviderTabs.Content>
+			</ProviderTabsApi.Container>
+			<ProviderTabsApi.Content>
 					{openIndexes => openIndexes[0] >= 0 && props.items[openIndexes[0]].contents}
-			</ProviderTabs.Content>
-		</ProviderTabs>
+			</ProviderTabsApi.Content>
+		</ProviderTabsApi>
 	)
 }
 

@@ -1,19 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import CompoundTabs from './CompoundTabs'
+import CompoundTabsApi from './CompoundTabsApi'
 
-export default function MyTabs(props) {
+export default function Tabs(props) {
 	return (
-		<CompoundTabs
+		<CompoundTabsApi
 			handlerOpenIndex={() => console.log('Compound Tabs handlerOpenIndex')}
 			preventClosingLastItem
 		>
 			{({ openIndexes, handleItemClick }) => (
 				<React.Fragment>
-					<CompoundTabs.Container>
+					<CompoundTabsApi.Container>
 						{props.items.map((item, index) => (
-							<CompoundTabs.Button
+							<CompoundTabsApi.Button
 								handleItemClick={handleItemClick}
 								index={index}
 								key={item.title}
@@ -21,15 +21,15 @@ export default function MyTabs(props) {
 								openClassName={props.openClassName}
 							>
 								{item.title}
-							</CompoundTabs.Button>
+							</CompoundTabsApi.Button>
 						))}
-					</CompoundTabs.Container>
-					<CompoundTabs.Content openIndexes={openIndexes}>
+					</CompoundTabsApi.Container>
+					<CompoundTabsApi.Content openIndexes={openIndexes}>
 						{openIndexes[0] >= 0 && props.items[openIndexes[0]].contents}
-					</CompoundTabs.Content>
+					</CompoundTabsApi.Content>
 				</React.Fragment>
 			)}
-		</CompoundTabs>
+		</CompoundTabsApi>
 	)
 }
 

@@ -6,7 +6,7 @@ import Button from '../Shared/Button.component'
 import Content from '../Shared/Content.component'
 import OpenIndexManager from './OpenIndexManager'
 
-export default class CompoundTabs extends React.Component {
+export default class CompoundTabsApi extends React.Component {
 	static propTypes = {
 		children: PropTypes.func,
 	}
