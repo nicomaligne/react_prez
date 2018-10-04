@@ -11,10 +11,8 @@ const TabsContainer = styled.div`
 
 export default class RenderPropsTabs extends React.Component {
 	static propTypes = {
-		contentClassName: PropTypes.string,
 		openClassName: PropTypes.string,
 		items: PropTypes.array,
-		titleClassName: PropTypes.string,
 	}
 
 	render() {

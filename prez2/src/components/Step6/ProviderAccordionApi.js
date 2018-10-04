@@ -6,7 +6,7 @@ import Button from '../Shared/Button.component'
 import Content from '../Shared/Content.component'
 import Item from '../Shared/Item.component'
 
-export default class CompoundAccordion extends React.Component {
+export default class CompoundAccordionApi extends React.Component {
 
 	static Button = ({ index, openClassName, ...props }) => (
 		<OpenIndexManager.Consumer>
