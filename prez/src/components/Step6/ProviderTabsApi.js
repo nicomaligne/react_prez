@@ -6,7 +6,7 @@ import Button from '../Shared/Button.component'
 import Content from '../Shared/Content.component'
 import OpenIndexManager from './OpenIndexManager'
 
-export default class CompoundTabsApi extends React.Component {
+export default class ProviderTabsApi extends React.Component {
 	static propTypes = {
 		children: PropTypes.array,
 	}
@@ -28,6 +28,12 @@ export default class CompoundTabsApi extends React.Component {
 		</OpenIndexManager.Consumer>
 	)
 
+	/*
+		In some case, we may want pass some of our 'private' props.
+		Here we want to share the openIndexes, and give back the rendering to the user,
+		using children as a function, once more.
+		If it's a static content, the user can just render the children.
+	*/
 	static Content = ({ children, ...props }) => (
 		<OpenIndexManager.Consumer>
 			{({ openIndexes }) => (

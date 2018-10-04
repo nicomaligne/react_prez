@@ -1,6 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+/*
+	We are creating our OpenIndexManager context here.
+	No default value, this context must be used inside his Provider component,
+	else it will crash.
+*/
 const OpenIndexManagerContext = React.createContext()
 
 const preventClose = (openIndexes, index, preventClosingLastItem) => {
@@ -37,15 +42,20 @@ export default class OpenIndexManager extends React.Component {
 		preventClosingLastItem: PropTypes.bool,
 	}
 
+	/*
+		This is our Consumer component. He's linked to the OpenIndexManager context.
+		If there value is undefined, that means this Consumer is used outside this context.
+		This makes our API more stronger.
+	*/
 	static Consumer = props => (
 		<OpenIndexManagerContext.Consumer {...props}>
-			{context => {
-				if (!context) {
+			{value => {
+				if (!value) {
 					throw new Error(
 						'OpenIndexManager Consumer components cannot be rendered outside the OpenIndexManager Provider',
 					)
 				}
-				return props.children(context)
+				return props.children(value)
 			}}
 		</OpenIndexManagerContext.Consumer>
 	)
@@ -63,6 +73,12 @@ export default class OpenIndexManager extends React.Component {
 		)
 	}
 
+	/*
+		Every time the openIndexes change, a render will be thrown.
+		To avoid create a new object every time in the Provider value,
+		we can put the event handler in the state, and pass it to the Provider.
+		It's a small perf gain, but still avoid some memory allocation.
+	*/
 	state = {
 		openIndexes: [0],
 		handleItemClick: this.handleItemClick,
