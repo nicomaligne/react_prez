@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import classNames from 'classnames'
 import Button from '../Shared/Button.component'
 import Content from '../Shared/Content.component'
 import OpenIndexManager from './OpenIndexManager'
@@ -12,10 +11,8 @@ const TabsContainer = styled.div`
 
 export default class RenderPropsTabs extends React.Component {
 	static propTypes = {
-		contentClassName: PropTypes.string,
 		openClassName: PropTypes.string,
 		items: PropTypes.array,
-		titleClassName: PropTypes.string,
 	}
 
 	render() {

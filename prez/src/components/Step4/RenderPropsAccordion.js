@@ -12,7 +12,6 @@ export default class RenderPropsAccordion extends React.Component {
 			PropTypes.shape({ title: PropTypes.string, contents: PropTypes.string }),
 		),
 		openClassName: PropTypes.string,
-		closeClassName: PropTypes.string,
 	}
 
 	render() {

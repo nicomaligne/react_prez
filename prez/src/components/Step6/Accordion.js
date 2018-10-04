@@ -22,7 +22,9 @@ export default function Accordion(props) {
 	)
 }
 
-MyAccordion.propTypes = {
-	titleClassName: PropTypes.string,
-	items: PropTypes.array,
+Accordion.propTypes = {
+	items: PropTypes.arrayOf(
+		PropTypes.shape({ title: PropTypes.string, contents: PropTypes.string }),
+	),
+	openClassName: PropTypes.string,
 }
