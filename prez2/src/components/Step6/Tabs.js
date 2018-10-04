@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ProviderTabsApi from './ProviderTabsApi'
 
-export default function MyTabs(props) {
+export default function Tabs(props) {
 	return (
 		<ProviderTabsApi
 			handlerOpenIndex={() => console.log('Provider Tabs handlerOpenIndex')}
@@ -20,13 +20,15 @@ export default function MyTabs(props) {
 				))}
 			</ProviderTabsApi.Container>
 			<ProviderTabsApi.Content>
-					{openIndexes => openIndexes[0] >= 0 && props.items[openIndexes[0]].contents}
+				{openIndexes => openIndexes[0] >= 0 && props.items[openIndexes[0]].contents}
 			</ProviderTabsApi.Content>
 		</ProviderTabsApi>
 	)
 }
 
-MyTabs.propTypes = {
-	items: PropTypes.array,
-	titleClassName: PropTypes.string,
+Tabs.propTypes = {
+	items: PropTypes.arrayOf(
+		PropTypes.shape({ title: PropTypes.string, contents: PropTypes.string }),
+	),
+	openClassName: PropTypes.string,
 }

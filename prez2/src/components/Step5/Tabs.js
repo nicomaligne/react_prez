@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
 import CompoundTabsApi from './CompoundTabsApi'
 
 export default function Tabs(props) {
@@ -33,9 +32,9 @@ export default function Tabs(props) {
 	)
 }
 
-MyTabs.propTypes = {
-	items: PropTypes.array,
-	titleClassName: PropTypes.string,
-	contentClassName: PropTypes.string,
+Tabs.propTypes = {
+	items: PropTypes.arrayOf(
+		PropTypes.shape({ title: PropTypes.string, contents: PropTypes.string }),
+	),
 	openClassName: PropTypes.string,
 }

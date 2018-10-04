@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
 import CompoundAccordionApi from './CompoundAccordionApi'
 
 export default function Accordion(props) {
@@ -33,7 +32,9 @@ export default function Accordion(props) {
 	)
 }
 
-MyAccordion.propTypes = {
-	titleClassName: PropTypes.string,
-	items: PropTypes.array,
+Accordion.propTypes = {
+	items: PropTypes.arrayOf(
+		PropTypes.shape({ title: PropTypes.string, contents: PropTypes.string }),
+	),
+	openClassName: PropTypes.string,
 }
