@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import classNames from 'classnames'
-import Button from '../Shared/Button.component'
-import Content from '../Shared/Content.component'
-import Item from '../Shared/Item.component'
+import Button from '../../Shared/Button.component'
+import Content from '../../Shared/Content.component'
+import Item from '../../Shared/Item.component'
 
 const TabsContainer = styled.div`
 	display: flex;
@@ -34,8 +34,9 @@ export class EnhancedAccordionAndTab extends React.Component {
 		openIndexes: PropTypes.array,
 		items: PropTypes.array,
 		position: PropTypes.string,
-		single: PropTypes.bool,
-		preventClose: PropTypes.bool,
+		multiSelect: PropTypes.bool,
+		preventClosingLastItem: PropTypes.bool,
+		handlerOpenIndex: PropTypes.func,
 		titleClassName: PropTypes.string,
 		contentClassName: PropTypes.string,
 		closeClassName: PropTypes.string,

@@ -1,23 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import classNames from 'classnames'
-import Button from '../Shared/Button.component'
-import Content from '../Shared/Content.component'
 import OpenIndexManager from './OpenIndexManager'
+import Button from '../../Shared/Button.component'
+import Content from '../../Shared/Content.component'
+import Item from '../../Shared/Item.component'
 
-export default class CompoundTabsApi extends React.Component {
-	static propTypes = {
-		children: PropTypes.array,
-	}
-
-	static Container = styled.div`
-		display: flex;
-	`
-
+export default class CompoundAccordionApi extends React.Component {
 	static Button = ({ index, openClassName, ...props }) => (
 		<OpenIndexManager.Consumer>
-			{({ handleItemClick, openIndexes }) => (
+			{({ openIndexes, handleItemClick }) => (
 				<Button
 					className={classNames(openIndexes.includes(index) ? openClassName : null)}
 					isOpen={openIndexes.includes(index)}
@@ -28,15 +20,13 @@ export default class CompoundTabsApi extends React.Component {
 		</OpenIndexManager.Consumer>
 	)
 
-	static Content = ({ children, ...props }) => (
+	static Content = ({ index, ...props }) => (
 		<OpenIndexManager.Consumer>
-			{({ openIndexes }) => (
-				<Content isOpen={openIndexes[0] >= 0} {...props}>
-					{typeof children === 'function' ? children(openIndexes) : children}
-				</Content>
-			)}
+			{({ openIndexes }) => <Content isOpen={openIndexes.includes(index)} {...props} />}
 		</OpenIndexManager.Consumer>
 	)
+
+	static Item = props => <Item {...props} direction="vertical" />
 
 	render() {
 		return <OpenIndexManager {...this.props} />

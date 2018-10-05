@@ -2,9 +2,9 @@ import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import OpenIndexManager from './OpenIndexManager'
-import Button from '../Shared/Button.component'
-import Content from '../Shared/Content.component'
-import Item from '../Shared/Item.component'
+import Button from '../../Shared/Button.component'
+import Content from '../../Shared/Content.component'
+import Item from '../../Shared/Item.component'
 
 export default class RenderPropsAccordion extends React.Component {
 	static propTypes = {

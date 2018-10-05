@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Button from '../Shared/Button.component'
-import Content from '../Shared/Content.component'
-import Item from '../Shared/Item.component'
+import Button from '../../Shared/Button.component'
+import Content from '../../Shared/Content.component'
+import Item from '../../Shared/Item.component'
 
 export class BasicAccordion extends React.Component {
 	static propTypes = {

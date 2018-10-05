@@ -2,12 +2,15 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import Header from './Header'
-import Step1 from './Step1'
-import Step2 from './Step2'
-import Step3 from './Step3'
-import { Step4 } from './Step4'
-import { Step5 } from './Step5'
-import { Step6 } from './Step6'
+import Step1 from './final/Step1'
+import Step2 from './final/Step2'
+import Step3 from './final/Step3'
+import { Step4 } from './final/Step4'
+import { Step5 } from './final/Step5'
+import { Step6 } from './final/Step6'
+import ExerciceStep1 from './exercices/Step1'
+import ExerciceStep2 from './exercices/Step2'
+import ExerciceStep3 from './exercices/Step3'
 import items from './Shared/data'
 
 const MainContainer = styled.div`
@@ -47,6 +50,18 @@ export default function Routes() {
 					<Route
 						path="/step6"
 						render={() => <Step6 items={items} openClassName="opened" />}
+					/>
+					<Route
+						path="/exercice-step1"
+						render={() => <ExerciceStep1 items={items} openClassName="opened" />}
+					/>
+					<Route
+						path="/exercice-step2"
+						render={() => <ExerciceStep2 items={items} openClassName="opened" />}
+					/>
+					<Route
+						path="/exercice-step3"
+						render={() => <ExerciceStep3 items={items} openClassName="opened" />}
 					/>
 				</Switch>
 			</MainContainer>

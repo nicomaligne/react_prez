@@ -1,5 +1,5 @@
 import React from 'react'
-import { PropsForm } from '../Shared/PropsForm.component'
+import { PropsForm } from '../../Shared/PropsForm.component'
 import { EnhancedAccordionAndTab } from './EnhancedAccordionAndTab.component'
 
 export class Accordion extends React.Component {
