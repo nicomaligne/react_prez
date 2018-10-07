@@ -1,10 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import Button from '../Shared/Button.component'
-import Content from '../Shared/Content.component'
-import Item from '../Shared/Item.component'
+import styled from 'styled-components'
+import Button from '../../Shared/Button.component'
+import Content from '../../Shared/Content.component'
+import Item from '../../Shared/Item.component'
 
+const TabsContainer = styled.div`
+	display: flex;
+`
 const preventClose = (openIndexes, index, preventClosingLastItem) => {
 	if (preventClosingLastItem && openIndexes.length === 1) {
 		return openIndexes
@@ -25,17 +28,15 @@ const setMultiOpenIndexes = (index, preventClosingLastItem) => state => ({
 		: [...state.openIndexes, index],
 })
 
-export class EnhancedAccordion extends React.Component {
+export class EnhancedAccordionAndTab extends React.Component {
 	static propTypes = {
 		openIndexes: PropTypes.array,
 		items: PropTypes.array,
 		position: PropTypes.string,
-		single: PropTypes.bool,
-		preventClose: PropTypes.bool,
-		titleClassName: PropTypes.string,
-		contentClassName: PropTypes.string,
-		closeClassName: PropTypes.string,
-		openClassName: PropTypes.string,
+		multiSelect: PropTypes.bool,
+		preventClosingLastItem: PropTypes.bool,
+		handlerOpenIndex: PropTypes.func,
+		tabs: PropTypes.bool,
 	}
 
 	constructor(props) {
@@ -69,16 +70,31 @@ export class EnhancedAccordion extends React.Component {
 				? 'vertical'
 				: 'horizontal'
 		const after = this.props.position === 'right' || this.props.position === 'beside'
-		const openClassName = classNames(
-			this.props.titleClassName,
-			this.props.contentClassName,
-			this.props.openClassName,
-		)
-		const closeClassName = classNames(
-			this.props.titleClassName,
-			this.props.contentClassName,
-			this.props.closeClassName,
-		)
+
+		if (this.props.tabs) {
+			return (
+				<div>
+					{this.props.tabs && (
+						<div>
+							<TabsContainer>
+								{this.props.items.map((item, index) => (
+									<Button
+										key={index}
+										isOpen={this.state.openIndexes.includes(index)}
+										onClick={() => this.handleItemClick(index)}
+									>
+										{item.title}
+									</Button>
+								))}
+							</TabsContainer>
+							<Content isOpen>
+								{this.props.items[this.state.openIndexes[0]].contents}
+							</Content>
+						</div>
+					)}
+				</div>
+			)
+		}
 
 		return (
 			<div>
@@ -86,28 +102,19 @@ export class EnhancedAccordion extends React.Component {
 					<Item key={item.title} direction={direction}>
 						{!after && (
 							<Button
-								className={
-									this.state.openIndexes.includes(index)
-										? openClassName
-										: closeClassName
-								}
 								isOpen={this.state.openIndexes.includes(index)}
 								onClick={() => this.handleItemClick(index)}
 							>
 								{item.title}
 							</Button>
 						)}
+
 						<Content isOpen={this.state.openIndexes.includes(index)}>
 							{item.contents}
 						</Content>
 
 						{after && (
 							<Button
-								className={
-									this.state.openIndexes.includes(index)
-										? openClassName
-										: closeClassName
-								}
 								isOpen={this.state.openIndexes.includes(index)}
 								onClick={() => this.handleItemClick(index)}
 							>

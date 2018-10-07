@@ -1,9 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
 import OpenIndexManager from './OpenIndexManager'
-import Button from '../Shared/Button.component'
-import Content from '../Shared/Content.component'
-import Item from '../Shared/Item.component'
+import Button from '../../Shared/Button.component'
+import Content from '../../Shared/Content.component'
+import Item from '../../Shared/Item.component'
 
 export default class ProviderAccordionApi extends React.Component {
 	/*

@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { injectGlobal } from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'
-import Routes from './components/Routes.component'
+import Routes from './Routes.component'
 
 ReactDOM.render(
 	<BrowserRouter>
