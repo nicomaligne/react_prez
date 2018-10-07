@@ -5,7 +5,12 @@ import Button from '../../Shared/Button.component'
 import Content from '../../Shared/Content.component'
 import Item from '../../Shared/Item.component'
 
-export default class CompoundAccordionApi extends React.Component {
+export default class ProviderAccordionApi extends React.Component {
+	/*
+		This is how we can use our Consumer. We add it to our compound components,
+		it will avoid some boiler plate code, and ensure that we are only exposing what we want,
+		for every component.
+	*/
 	static Button = ({ index, openClassName, ...props }) => (
 		<OpenIndexManager.Consumer>
 			{({ openIndexes, handleItemClick }) => (

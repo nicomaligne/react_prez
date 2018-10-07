@@ -2,6 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ProviderTabsApi from './ProviderTabsApi'
 
+/*
+	But you can still inversion of control in rendering everywhere you want,
+	check the ProviderTabsApi.Content component, it used the openIndexes in a children as a function.
+*/
 export default function Tabs(props) {
 	return (
 		<ProviderTabsApi

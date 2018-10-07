@@ -2,6 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ProviderAccordionApi from './ProviderAccordionApi'
 
+/*
+	The code here is more 'pure'.
+	Only the props that allows customization are here.
+*/
 export default function Accordion(props) {
 	return (
 		<ProviderAccordionApi
