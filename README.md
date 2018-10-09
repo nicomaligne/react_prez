@@ -3,5 +3,5 @@
 ### React Pattern
 
 ### Install
-gi in prez directory
+Go in prez directory
 then execute yarn
