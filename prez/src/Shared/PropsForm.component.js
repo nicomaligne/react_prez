@@ -18,6 +18,13 @@ const LabelMarged = styled.label`
 export class PropsForm extends React.Component {
 	static propTypes = {
 		children: PropTypes.func,
+		tabs: PropTypes.bool,
+		position: PropTypes.bool,
+	}
+
+	static defaultProps = {
+		tabs: true,
+		position: true,
 	}
 
 	constructor(props) {
@@ -56,16 +63,18 @@ export class PropsForm extends React.Component {
 								onChange={this.changeCheckBoxStateAttribute}
 							/>
 						</LabelMarged>
-						<LabelMarged htmlFor="tabs">
-							Tabs
-							<input
-								id="tabs"
-								name="tabs"
-								type="checkbox"
-								checked={this.state.tabs}
-								onChange={this.changeCheckBoxStateAttribute}
-							/>
-						</LabelMarged>
+						{this.props.tabs && (
+							<LabelMarged htmlFor="tabs">
+								Tabs
+								<input
+									id="tabs"
+									name="tabs"
+									type="checkbox"
+									checked={this.state.tabs}
+									onChange={this.changeCheckBoxStateAttribute}
+								/>
+							</LabelMarged>
+						)}
 						<LabelMarged htmlFor="preventClosingLastItem">
 							preventClosingLastItem
 							<input
@@ -76,20 +85,22 @@ export class PropsForm extends React.Component {
 								onChange={this.changeCheckBoxStateAttribute}
 							/>
 						</LabelMarged>
-						<LabelMarged htmlFor="position">
-							Position:
-							<select
-								id="position"
-								name="position"
-								value={this.state.position}
-								onChange={this.handleChange}
-							>
-								<option value="above">above</option>
-								<option value="beside">beside</option>
-								<option value="left">left</option>
-								<option value="right">right</option>
-							</select>
-						</LabelMarged>
+						{this.props.position && (
+							<LabelMarged htmlFor="position">
+								Position:
+								<select
+									id="position"
+									name="position"
+									value={this.state.position}
+									onChange={this.handleChange}
+								>
+									<option value="above">above</option>
+									<option value="beside">beside</option>
+									<option value="left">left</option>
+									<option value="right">right</option>
+								</select>
+							</LabelMarged>
+						)}
 					</div>
 				</form>
 				<div>{this.props.children({ ...this.props, ...this.state })}</div>
