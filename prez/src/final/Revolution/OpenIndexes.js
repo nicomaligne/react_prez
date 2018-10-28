@@ -17,9 +17,18 @@ const multiIndexes = (index, openIndexes, preventClosingLastItem) => {
 	// return [...openIndexes, index]
 }
 
-const useOpenIndexes = (index, multiSelect, preventClosingLastItem) => {
-	console.log({ multiSelect })
+const useOpenIndexes = index => {
+	// console.log({ multiSelect })
 	const [openIndexes, setOpenIndexes] = useState([index])
+	if (index < 0) {
+		return openIndexes
+	}
+	if (openIndexes.includes(index)) {
+		setOpenIndexes(openIndexes.filter(i => i !== index))
+	} else {
+		setOpenIndexes([...openIndexes, index])
+	}
+	return openIndexes
 	// if (multiSelect && openIndexes.includes(index)) {
 	//     setOpenIndexes([index])
 	// }
@@ -27,15 +36,24 @@ const useOpenIndexes = (index, multiSelect, preventClosingLastItem) => {
 	// return setOpenIndexes([index])
 	// return setOpenIndexes(multiIndexes(index, openIndexes, preventClosingLastItem))
 	// }
-	let toto = index
-	if (openIndexes.includes(index)) {
-		toto = preventClose(index, openIndexes, preventClosingLastItem)
-		console.log({ toto })
-		// return preventClose(index, openIndexes, preventClosingLastItem)
-		// return toto
-	}
-	setOpenIndexes([toto])
-	return openIndexes
+	// let toto = openIndexes
+	// if (openIndexes.includes(index)) {
+	// toto = preventClose(index, openIndexes, preventClosingLastItem)
+	// console.log({ toto })
+	// return preventClose(index, openIndexes, preventClosingLastItem)
+	// return toto
+	// }
+	// console.log({ toto })
+
+	// if (!openIndexes.includes(index)) {
+	// 	setOpenIndexes([...openIndexes, index])
+	// }
+	// if (openIndexes.includes(index)) {
+
+	// }
+	// return toto
+	// setOpenIndexes([toto])
+	// return openIndexes
 
 	// 	setOpenIndexes(
 	// 		openIndexes.includes(index)

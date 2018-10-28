@@ -16,11 +16,17 @@ const getAccordionContext = () => {
 }
 
 const AccordionApi = props => {
-	const [activeIndex, setActiveIndex] = useState(0)
-	// useEffect(() => props.handlerOpenIndex)
-	const openIndexes = useOpenIndexes(activeIndex, props.multiSelect, props.preventClosingLastItem)
+	const [openIndexes, setOpenIndexes] = useState([0])
+	function onClick(index) {
+		useOpenIndexes(index)
+		if (openIndexes.includes(index)) {
+			setOpenIndexes(openIndexes.filter(i => i !== index))
+		} else {
+			setOpenIndexes([...openIndexes, index])
+		}
+	}
 	return (
-		<AccordionContext.Provider value={{ openIndexes, setActiveIndex }}>
+		<AccordionContext.Provider value={{ openIndexes, setActiveIndex: onClick }}>
 			{props.children}
 		</AccordionContext.Provider>
 	)
