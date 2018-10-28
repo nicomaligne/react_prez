@@ -49,6 +49,9 @@ class Links extends React.Component {
 					<Link to="/step6" href="/step6">
 						<LinkButton>Step6</LinkButton>
 					</Link>
+					<Link to="/revolution" href="/revolution">
+						<LinkButton>Revolution</LinkButton>
+					</Link>
 				</span>
 			</LinkBar>
 		)

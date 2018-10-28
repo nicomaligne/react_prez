@@ -33,6 +33,7 @@ export default class ProviderAccordionApi extends React.Component {
 	static Item = props => <Item {...props} direction="vertical" />
 
 	render() {
-		return <OpenIndexManager {...this.props} />
+		return this.props.children
+		// return <OpenIndexManager {...this.props} />
 	}
 }

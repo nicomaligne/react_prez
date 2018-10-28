@@ -8,6 +8,7 @@ import Step3 from './final/Step3'
 import { Step4 } from './final/Step4'
 import { Step5 } from './final/Step5'
 import { Step6 } from './final/Step6'
+import { Revolution } from './final/Revolution'
 import ExerciceStep1 from './exercices/Step1'
 import ExerciceStep2 from './exercices/Step2'
 import ExerciceStep3 from './exercices/Step3'
@@ -50,6 +51,10 @@ export default function Routes() {
 					<Route
 						path="/step6"
 						render={() => <Step6 items={items} openClassName="opened" />}
+					/>
+					<Route
+						path="/revolution"
+						render={() => <Revolution items={items} openClassName="opened" />}
 					/>
 					<Route
 						path="/exercice-step1"
