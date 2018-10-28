@@ -16,17 +16,12 @@ const getAccordionContext = () => {
 }
 
 const AccordionApi = props => {
-	const [openIndexes, setOpenIndexes] = useState([0])
+	const [openIndexes, onIndexChange] = useOpenIndexes(0)
 	function onClick(index) {
-		useOpenIndexes(index)
-		if (openIndexes.includes(index)) {
-			setOpenIndexes(openIndexes.filter(i => i !== index))
-		} else {
-			setOpenIndexes([...openIndexes, index])
-		}
+		onIndexChange(index)
 	}
 	return (
-		<AccordionContext.Provider value={{ openIndexes, setActiveIndex: onClick }}>
+		<AccordionContext.Provider value={{ openIndexes, onClick }}>
 			{props.children}
 		</AccordionContext.Provider>
 	)
@@ -38,12 +33,12 @@ AccordionApi.Content = props => {
 }
 
 AccordionApi.Button = props => {
-	const { openIndexes, setActiveIndex } = getAccordionContext()
+	const { openIndexes, onClick } = getAccordionContext()
 	return (
 		<Button
 			className={classNames(openIndexes.includes(props.index) ? props.openClassName : null)}
 			isOpen={openIndexes.includes(props.index)}
-			onClick={() => setActiveIndex(props.index)}
+			onClick={() => onClick(props.index)}
 			{...props}
 		/>
 	)
