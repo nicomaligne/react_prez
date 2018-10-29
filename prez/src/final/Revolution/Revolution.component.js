@@ -1,6 +1,6 @@
 import React from 'react'
 import Accordion from './Accordion'
-// import Tabs from './Tabs'
+import Tabs from './Tabs'
 
 export default class revolution extends React.Component {
 	render() {
@@ -9,6 +9,10 @@ export default class revolution extends React.Component {
 				<section>
 					<h3>Accordion</h3>
 					<Accordion {...this.props} />
+				</section>
+				<section>
+					<h3>Tabs</h3>
+					<Tabs {...this.props} />
 				</section>
 			</div>
 		)

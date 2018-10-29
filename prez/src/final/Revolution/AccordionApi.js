@@ -1,5 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import classNames from 'classnames'
+import PropTypes from 'prop-types'
 import Button from '../../Shared/Button.component'
 import Content from '../../Shared/Content.component'
 import Item from '../../Shared/Item.component'
@@ -16,15 +17,25 @@ const getAccordionContext = () => {
 }
 
 const AccordionApi = props => {
-	const [openIndexes, onIndexChange] = useOpenIndexes(0)
+	const [openIndexes, onIndexChange] = useOpenIndexes([0])
 	function onClick(index) {
-		onIndexChange(index)
+		onIndexChange(index, props.multiSelect, props.preventClosingLastItem)
+		if (props.handlerOpenIndex) {
+			props.handlerOpenIndex()
+		}
 	}
 	return (
 		<AccordionContext.Provider value={{ openIndexes, onClick }}>
 			{props.children}
 		</AccordionContext.Provider>
 	)
+}
+
+AccordionApi.propTypes = {
+	children: PropTypes.array,
+	handlerOpenIndex: PropTypes.func,
+	multiSelect: PropTypes.bool,
+	preventClosingLastItem: PropTypes.bool,
 }
 
 AccordionApi.Content = props => {

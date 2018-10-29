@@ -1,10 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import AccordionApi from './AccordionApi'
 
 function Accordion(props) {
 	return (
 		<AccordionApi
-			handlerOpenIndex={console.log('Provider Accordion handlerOpenIndex')}
+			handlerOpenIndex={console.log('Revolution will not be televised')}
 			multiSelect
 		>
 			{props.items.map((item, index) => (
@@ -17,6 +18,11 @@ function Accordion(props) {
 			))}
 		</AccordionApi>
 	)
+}
+
+Accordion.propTypes = {
+	items: PropTypes.array,
+	openClassName: PropTypes.string,
 }
 
 export default Accordion
